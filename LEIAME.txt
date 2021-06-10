@@ -1,0 +1,41 @@
+######################################################################
+#                                                                    #
+#                                                                    #
+#	Comandos para serem rodados no Git Bash para baixar o projeto    #
+#      do GitHub                                                     #
+#                                                                    #
+#                                                                    #
+######################################################################
+
+Passo 1: Crie uma pasta c:\Laravel
+
+Passo 2: Acesse esta pasta com o Windows Explorer
+
+Passo 3: Clique com o botão direito do mouse e escolha a opção 
+	"Git Bash Here" 
+	- Isso abrirá a tela do Git Bash direto na pasta "c:\Laravel"
+
+Passo 4: execute o comando abaixo no Git Bash
+	# Para clonar um repositório do GitHub
+	git clone https://github.com/luiz-urquiza/AHP-IFMS.git
+
+Passo 5: Abra uma janela do prompt de comando (cmd) e execute 
+os comandos abaixo
+	# Para gerar os arquivos do composer
+	composer install
+	# Para gerar um arquivo .env
+	copy .env.example .env
+	# Para gerar a chave de criptografia da aplicação (encryption key)
+	php artisan key:generate
+
+
+
+
+# Adiciona todos os arquivos novos/modificados
+git add --all
+# Confirma a adição de todas as inserções/modificações no git
+git commit -m 'Mensagem qualquer'
+#
+git push
+
+Ou use o Git GUI
