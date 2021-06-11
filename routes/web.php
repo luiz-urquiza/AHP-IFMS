@@ -16,9 +16,11 @@ Route::get('/', function() {
 //Route::get('/objetivos', 'ObjetivoController@index');
 Route::get('/objetivos', [ObjetivoController::class, 'index']);
 
-Route::get('/objetivo/{id}/criterios', function($id) {
-	return view('objetivos.criterios');
-});
+//Route::get('/objetivo/{id}/criterios', function($id=1) {
+//	return view('objetivos.criterios');
+//});
+
+Route::get('/objetivo/{id}/criterios', [ObjetivoController::class, 'criterios']);
 
 Route::get('/objetivo/{id}/alternativas', function($id) {
 	return view('objetivos.alternativas');

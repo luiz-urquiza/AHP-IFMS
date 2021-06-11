@@ -1,8 +1,10 @@
 @extends ('layouts.index')
 
 @section ('menu')
-	<ul>
-		<li><a href="\objetivos"></a></li>
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item">
+			<a class="nav-link" href="/objetivos">Objetivos</a>
+		</li>
 	</ul>
 @stop
 

@@ -1,4 +1,4 @@
-@extends ('layouts.index');
+@extends ('layouts.index')
 
 @section ('menu')
     <ul class="navbar-nav mr-auto">
@@ -6,6 +6,7 @@
 			<a class="nav-link" href="/objetivos">Objetivos</a>
 		</li>
 <!-- Dropdown -->
+<!--
 		<li class="nav-item dropdown">
 		  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 			Dropdown link
@@ -16,6 +17,7 @@
 			<a class="dropdown-item" href="#">Link 3</a>
 		  </div>
 		</li>
+-->
     </ul>
 
 @stop
