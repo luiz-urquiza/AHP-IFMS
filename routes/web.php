@@ -22,6 +22,8 @@ Route::get('/objetivos', [ObjetivoController::class, 'index']);
 
 Route::get('/objetivo/{id}/criterios', [ObjetivoController::class, 'criterios']);
 
-Route::get('/objetivo/{id}/alternativas', function($id) {
-	return view('objetivos.alternativas');
-});
+//Route::get('/objetivo/{id}/alternativas', function($id) {
+//	return view('objetivos.alternativas');
+//});
+
+Route::get('/objetivo/{id}/alternativas', [ObjetivoController::class, 'alternativas']);
