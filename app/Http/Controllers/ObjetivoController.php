@@ -16,7 +16,7 @@ class ObjetivoController extends Controller
 		return view("objetivos.objetivos")->with('objetivos', $objetivos);
 	}
 
-	public function criterios($id=1){
+	public function criterios($id){
 		// Mostras os critérios de um objetivo		
 		return view("objetivos.criterios")->with('id', $id);
 	}
