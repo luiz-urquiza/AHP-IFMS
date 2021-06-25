@@ -9,8 +9,23 @@
 @stop
 
 @section ('conteudo')
-	<h3>Critérios do Objetivo {{$id}}</h3>
-
-	Se for alterado...
-	
+	<h3>Critérios do Objetivo {{ $objetivo["id"] }} - {{ $objetivo["nome"] }}</h3>
+<!--
+	<table class="table">
+		<theader>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+			</tr>
+		</theader>
+		<tbody>
+			@foreach($criterios as $criterio)
+			<tr>
+				<td>{{ $criterio["id"] }}</td>
+				<td>{{ $criterio["nome"] }}</td>
+			</tr>
+			@endforeach
+		</tbody>
+	</table>
+-->
 @stop
