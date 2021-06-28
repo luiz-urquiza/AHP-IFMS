@@ -31,8 +31,15 @@ class ObjetivoController extends Controller
 		
 		$objetivo = $this->objetivos[$id];
 		$criterios = $this->criterios;
+		$julgamento_ic = array();
 
-		return view("objetivos.criterios")->with(["objetivo" => $objetivo, "criterios" => $criterios]);
+		foreach ($criterios as $c1){
+			foreach ($criterios as $c2){
+				$julgamento_ic[] = array("objetivo_id" => 3, "criterio_id_1"=>c1["id"], "criterio_id_2"=>c2["id"]);
+			}
+		}
+
+		return view("objetivos.criterios")->with(["objetivo" => $objetivo, "criterios" => $criterios, "julgamento_ic"=>$julgamento_ic]);
 	}
 
 	public function alternativas($id){
