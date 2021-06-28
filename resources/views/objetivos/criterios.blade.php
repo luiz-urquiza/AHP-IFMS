@@ -10,8 +10,8 @@
 
 @section ('conteudo')
 	<h3>Critérios do Objetivo {{ $objetivo["id"] }} - {{ $objetivo["nome"] }}</h3>
-
-<!--	<table class="table">
+<!--
+	<table class="table">
 		<theader>
 			<tr>
 				<th>ID</th>
@@ -32,7 +32,7 @@
 <table class="table">
   <thead class="thead-light">
     <tr>
-    <th>ID</th>
+    <th>Critérios</th>
       <th scope="col">Custo</th>
       <th scope="col">Cilindrada</th>
       <th scope="col">Esportividade</th>
