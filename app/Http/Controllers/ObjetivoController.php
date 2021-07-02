@@ -32,7 +32,7 @@ class ObjetivoController extends Controller
 		$objetivo = $this->objetivos[$id];
 		$criterios = $this->criterios;
 
-		return view("objetivos.criterios")->with(["objetivo" => $objetivo, "criterios" => $criterios);
+		return view("objetivos.criterios")->with(["objetivo" => $objetivo, "criterios" => $criterios]);
 	}
 
 	public function alternativas($id){
