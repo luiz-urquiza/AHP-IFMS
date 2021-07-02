@@ -33,31 +33,38 @@
   <thead class="thead-light">
     <tr>
     <th>Critérios</th>
-      <th scope="col">Custo</th>
-      <th scope="col">Cilindrada</th>
-      <th scope="col">Esportividade</th>
-    </tr>
+    @foreach($criterios as $criterio)
+			
+				<th scope="col">{{ $criterio["nome"] }}</th>
+		
+			@endforeach
+         </tr>
   </thead>
   <tbody>
-     <tr> 
-      <th scope="row">Custo</th>
+  @foreach($criterios as $criterio)
+  <tr> 
+      <th scope="row">{{$criterio["nome"]}}</th>
+      @foreach($criterios as $criterio2)
+      @if($criterio["id"] == $criterio2["id"])
       <td>1,000</td>
-      <td>1,710</td>
-      <td>1,442</td>
-    </tr>
-    <tr>
-      <th scope="row">Cilindrada</th>
-      <td>0,585</td>
-      <td>1,000</td>
-      <td>0,693</td>
-    </tr>
-    <tr>
-      <th scope="row">Esportividade</th>
-      <td>0,693</td>
-      <td>1,442</td>
-      <td>1,000</td>
-
-    </tr>
+      @elseif($criterio["id"] < $criterio2["id"])
+      <td>
+          <select>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          </select> 
+      </td>
+      @else
+      <td></td>
+      @endif
+      @endforeach
+  </tr>
+    @endforeach
   </tbody>
 </table>
 
