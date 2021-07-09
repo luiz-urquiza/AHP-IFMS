@@ -48,19 +48,19 @@
       @if($criterio["id"] == $criterio2["id"])
       <td>1,000</td>
       @elseif($criterio["id"] < $criterio2["id"])
-      <td>
-          <select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          </select> 
+      <td id="c{{$criterio['id']}}_{{$criterio2['id']}}">
+        <select class="custom-select">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
       </td>
       @else
-      <td></td>
+      <td id="c{{$criterio['id']}}_{{$criterio2['id']}}"></td>
       @endif
       @endforeach
   </tr>
