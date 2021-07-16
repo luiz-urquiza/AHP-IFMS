@@ -22,7 +22,8 @@
 
 @section('conteudo')
   <h3>AHP - Tomada de Decisões</h3>
-  <p>In this example, the navigation bar is hidden on small screens and replaced by a button in the top right corner (try to re-size this window).</p>
-  <p>Only when the button is clicked, the navigation bar will be displayed.</p>
-  <p>Tip: You can also remove the .navbar-expand-md class to ALWAYS hide navbar links and display the toggler button.</p>
+  <p>AHP (Analytpic Hierarchy Process)</p>
+  <p> Um dos métodos multicritério mais utilizados, Criado pelo Professor Thomas L. Saaty em 1980;</p>
+  <p> Permite o uso de critérios qualitativos bem como quantitativos no processo de avaliação. </p> 
+  <p>A ideia principal é dividir o problema de decisão em níveis hierárquicos, facilitando, assim, sua compreensão e avaliação.</p>
 @stop

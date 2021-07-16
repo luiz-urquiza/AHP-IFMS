@@ -44,10 +44,38 @@
 				</td>
 				<td>
 					<a href="/objetivo/{{ $objetivo['id'] }}/criterios">Critérios</a>
-					<a href="/objetivo/{{ $objetivo['id'] }}/alternativas">Alternativas</a>
+					<a href="/objetivo/{{ $objetivo['id'] }}/rnativasrnativas">Alternativas</a>
 				</td>
 			</tr>
 			@endforeach
+
+	
 		</tbody>
 	</table>
+
+<div class="alert alert-info">
+
+	<div class="container">
+		<div class="row">
+		
+			<div class="col-sm-4">
+				<h3> Objetivo</h3>
+				<p> Obejetivo a ser alcançado, onde quer chegar ou qual o melhor caminho </p>
+			</div>
+				
+		
+			<div class="col-sm-4">
+				<h3>Critérios</h3>
+				<p>Um critério pode ser uma forma ou uma condição.</p>
+			</div>
+		
+			
+			<div class="col-sm-4">
+				<h3>Alternativas</h3>
+				<p>Alternativa São as opções que podem ajudar a chegar a uma conclusão</p>
+			</div>
+			
+		</div>
+	</div>
+</div>
 @stop
