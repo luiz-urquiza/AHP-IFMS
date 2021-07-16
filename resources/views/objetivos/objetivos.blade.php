@@ -60,7 +60,7 @@
 		
 			<div class="col-sm-4">
 				<h3> Objetivo</h3>
-				<p> Obejetivo a ser alcançado, onde quer chegar ou qual o melhor caminho </p>
+				<p> Obejetivo a ser alcançado, onde quer chegar ou qual o melhor caminho. </p>
 			</div>
 				
 		
@@ -72,7 +72,7 @@
 			
 			<div class="col-sm-4">
 				<h3>Alternativas</h3>
-				<p>Alternativa São as opções que podem ajudar a chegar a uma conclusão</p>
+				<p>Alternativa São as opções que podem ajudar a chegar a uma conclusão.</p>
 			</div>
 			
 		</div>
