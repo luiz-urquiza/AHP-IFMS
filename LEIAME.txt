@@ -11,12 +11,12 @@ Passo 1: Crie uma pasta c:\Laravel
 
 Passo 2: Acesse esta pasta com o Windows Explorer
 
-Passo 3: Clique com o botão direito do mouse e escolha a opção 
+Passo 3: Clique com o botÃ£o direito do mouse e escolha a opÃ§Ã£o 
 	"Git Bash Here" 
-	- Isso abrirá a tela do Git Bash direto na pasta "c:\Laravel"
+	- Isso abrirÃ¡ a tela do Git Bash direto na pasta "c:\Laravel"
 
 Passo 4: execute o comando abaixo no Git Bash
-	# Para clonar um repositório do GitHub
+	# Para clonar um repositÃ³rio do GitHub
 	git clone https://github.com/luiz-urquiza/AHP-IFMS.git
 
 Passo 5: Abra uma janela do prompt de comando (cmd) e execute 
@@ -25,7 +25,7 @@ os comandos abaixo
 	composer install
 	# Para gerar um arquivo .env
 	copy .env.example .env
-	# Para gerar a chave de criptografia da aplicação (encryption key)
+	# Para gerar a chave de criptografia da aplicaÃ§Ã£o (encryption key)
 	php artisan key:generate
 
 
@@ -33,9 +33,9 @@ os comandos abaixo
 
 # Adiciona todos os arquivos novos/modificados
 git add --all
-# Confirma a adição de todas as inserções/modificações no git
+# Confirma a adiÃ§Ã£o de todas as inserÃ§Ãµes/modificaÃ§Ãµes no git
 git commit -m 'Mensagem qualquer'
-# Envia as alterações para o repositório remoto
+# Envia as alteraÃ§Ãµes para o repositÃ³rio remoto
 git push origin
 
 Ou use o Git GUI
