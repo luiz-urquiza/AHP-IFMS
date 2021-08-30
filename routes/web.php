@@ -15,6 +15,7 @@ Route::get('/', function() {
 
 //Route::get('/objetivos', 'ObjetivoController@index');
 Route::get('/objetivos', [ObjetivoController::class, 'index']);
+Route::get('/createObjetivo', [ObjetivoController::class, 'formCreate']);
 
 //Route::get('/objetivo/{id}/criterios', function($id=1) {
 //	return view('objetivos.criterios');

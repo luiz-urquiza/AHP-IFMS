@@ -25,6 +25,10 @@ class ObjetivoController extends Controller
 		return view("objetivos.objetivos")->with('objetivos', $objetivos);
 	}
 
+	public function formCreate(){
+		return view("objetivos.formCreateObjetivo");
+	}
+
 	public function criterios($id){
 		// Mostras os critérios de um objetivo
 		// Select * from criterios where objetivo_id = $id
