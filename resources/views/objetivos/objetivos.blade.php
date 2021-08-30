@@ -24,7 +24,9 @@
 
 @section ('conteudo')
 	<h1>Objetivos</h1>
-	
+	<div>
+		<a class="btn btn-primary" href="/formCreateObjetivo">Novo Objetivo</a>
+	</div><hr>
 	<table class="table table-bordered table-striped table-hover">
 		<thead>
 			<tr>
