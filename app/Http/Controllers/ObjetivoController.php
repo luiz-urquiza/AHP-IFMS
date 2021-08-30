@@ -29,6 +29,11 @@ class ObjetivoController extends Controller
 		return view("objetivos.formCreateObjetivo");
 	}
 
+	public function create(Request $request){
+		echo "testando retorno de formulário post<br><br>";
+		var_dump($request->all());
+	}
+
 	public function criterios($id){
 		// Mostras os critérios de um objetivo
 		// Select * from criterios where objetivo_id = $id
