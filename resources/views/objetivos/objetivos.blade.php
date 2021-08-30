@@ -60,7 +60,7 @@
 		
 			<div class="col-sm-4">
 				<h3> Objetivo</h3>
-				<p> Obejetivo a ser alcançado, onde quer chegar ou qual o melhor caminho. </p>
+				<p> Objetivo a ser alcançado, onde quer chegar ou qual o melhor caminho. </p>
 			</div>
 				
 		
