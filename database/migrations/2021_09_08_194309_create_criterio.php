@@ -15,8 +15,9 @@ class CreateCriterio extends Migration
     {
         Schema::create('criterio', function (Blueprint $table) {
             $table->id();
-            $table->int ('peso');
+            $table->integer ('peso');
             $table->string ('descricao', 200);
+            $table->unsignedBigInteger('objetivo_id');
             $table->foreign('objetivo_id')-> references('id')->on('objetivo');
             $table->timestamps();
         });
