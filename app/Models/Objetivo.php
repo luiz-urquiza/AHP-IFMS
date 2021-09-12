@@ -12,4 +12,9 @@ class Objetivo extends Model
     protected $table = 'objetivo';
 
     protected $fillable = ['descricao'];
+
+    public function criterios()
+    {
+        return $this->hasMany(Criterio::class);
+    }
 }

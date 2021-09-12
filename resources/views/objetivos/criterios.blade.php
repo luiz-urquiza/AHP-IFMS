@@ -9,15 +9,17 @@
 @stop
 
 @section ('conteudo')
-	<h3>Critérios do Objetivo {{ $objetivo["id"] }} - {{ $objetivo["nome"] }}</h3>
-<!--
+	<h3>Critérios do Objetivo {{ $objetivo["id"] }} - {{ $objetivo["descricao"] }}</h3>
+	<div>
+		<a class="btn btn-primary" href="/formCreateCriterio/{{ $objetivo['id'] }}">Novo Critério</a>
+	</div><hr>
 	<table class="table">
-		<theader>
+		<thead class="thead-light">
 			<tr>
 				<th>ID</th>
 				<th>Nome</th>
 			</tr>
-		</theader>
+		</thead>
 		<tbody>
 			@foreach($criterios as $criterio)
 			<tr>
@@ -26,9 +28,11 @@
 			</tr>
 			@endforeach
 		</tbody>
-	</table>
--->
-
+	</table><hr>
+	<div>
+		<a class="btn btn-primary" href="/formCreateCriterio/{{ $objetivo['id'] }}">Novo Critério</a>
+	</div>
+<!--
 <table class="table">
   <thead class="thead-light">
     <tr>
@@ -67,6 +71,6 @@
     @endforeach
   </tbody>
 </table>
-
+-->
 
 @stop
