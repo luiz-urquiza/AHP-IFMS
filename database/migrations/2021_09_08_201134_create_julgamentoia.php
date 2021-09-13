@@ -16,8 +16,8 @@ class CreateJulgamentoia extends Migration
         Schema::create('julgamentoia', function (Blueprint $table) {
             $table->id();
             $table->integer ('score');
-            $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')-> references('id')->on('usuario');
+            $table->unsignedBigInteger('users_id');
+            $table->foreign('users_id')-> references('id')->on('users');
             $table->timestamps();
         });
     }
