@@ -7,8 +7,9 @@
 <form method="POST" action="/createCriterio">
     @csrf
 
+    <input type="hidden" id="objetivo_id" name="objetivo_id" value="{{$objetivo['id']}}">
+
     <div class="form-group">
-    <label for="peso">Peso :</label>
     <label for="descricao">Descrição :</label>
     <input type="text" class="form-control" placeholder="Descrição do Critério" id="descricao" name="descricao">
   </div>

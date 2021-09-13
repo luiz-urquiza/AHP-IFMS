@@ -17,14 +17,14 @@
 		<thead class="thead-light">
 			<tr>
 				<th>ID</th>
-				<th>Nome</th>
+				<th>Descrição</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach($criterios as $criterio)
 			<tr>
-				<td>{{ $criterio["id"] }}</td>
-				<td>{{ $criterio["nome"] }}</td>
+				<td>{{ $criterio->id }}</td>
+				<td>{{ $criterio->descricao }}</td>
 			</tr>
 			@endforeach
 		</tbody>

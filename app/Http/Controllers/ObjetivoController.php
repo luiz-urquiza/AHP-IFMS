@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Objetivo;
+use App\Models\Criterio;
 
 class ObjetivoController extends Controller
 {
@@ -39,12 +40,16 @@ class ObjetivoController extends Controller
 		$data = $request->all();
 
 		$criterio = new Criterio();
-		$criterio->peso = $data['peso'];
+		$criterio->objetivo_id = $data['objetivo_id'];
 		$criterio->descricao = $data['descricao'];
-
+		$criterio->peso = 1;
 		$criterio->save();
 
-		return redirect('/criterios');
+		$url = "/objetivo/$criterio->objetivo_id/criterios";
+
+		//var_dump($url);
+
+		return redirect($url);
 	}
 
 	public function criterios($id){
@@ -53,6 +58,8 @@ class ObjetivoController extends Controller
 		
 		$objetivo = Objetivo::find($id);
 		$criterios = $objetivo->criterios();
+
+		//var_dump($criterios);
 
 		return view("objetivos.criterios")->with(["objetivo" => $objetivo, "criterios" => $criterios]);
 	}

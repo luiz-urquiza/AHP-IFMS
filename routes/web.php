@@ -18,6 +18,7 @@ Route::get('/objetivos', [ObjetivoController::class, 'index']);
 Route::get('/formCreateObjetivo', [ObjetivoController::class, 'formCreate']);
 Route::get('/formCreateCriterio/{id}', [ObjetivoController::class, 'formCreateCriterio']);
 Route::post('/createObjetivo', [ObjetivoController::class, 'create']);
+Route::post('/createCriterio', [ObjetivoController::class, 'createCriterio']);
 
 //Route::get('/objetivo/{id}/criterios', function($id=1) {
 //	return view('objetivos.criterios');
