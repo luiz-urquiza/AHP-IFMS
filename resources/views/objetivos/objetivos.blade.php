@@ -34,6 +34,7 @@
 				<th>Nome</th>
 				<th>Descrição</th>
 				<th>Operações</th>
+				<th>criterios</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -48,12 +49,17 @@
 					<a href="/objetivo/{{ $objetivo['id'] }}/criterios">Critérios</a>
 					<a href="/objetivo/{{ $objetivo['id'] }}/rnativasrnativas">Alternativas</a>
 				</td>
+
+				<td>{{$objetivo->criterios()->count()}}
 			</tr>
 			@endforeach
 
 	
 		</tbody>
 	</table>
+	<div><hr>
+		<a class="btn btn-primary" href="/formCreateObjetivo">Novo Objetivo</a>
+	</div><hr>
 
 <div class="alert alert-info">
 

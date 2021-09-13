@@ -7,12 +7,6 @@ use App\Models\Objetivo;
 
 class ObjetivoController extends Controller
 {
-	private $criterios = array(
-		array("id"=>"1", "nome"=>"Custo", "objetivo_id"=>"3"),
-		array("id"=>"2", "nome"=>"Cilindrada", "objetivo_id"=>"3"),
-		array("id"=>"3", "nome"=>"Esportividade", "objetivo_id"=>"3"),
-	);
-
 	public function index(){
 
 		$objetivos = Objetivo::get(); // SELECT * FROM objetivo
@@ -22,6 +16,12 @@ class ObjetivoController extends Controller
 
 	public function formCreate(){
 		return view("objetivos.formCreateObjetivo");
+	}
+
+	public function formCreateCriterio($id){
+		// Prof Luiz: Alterei aqui
+		$objetivo = Objetivo::find($id);
+		return view("objetivos.formCreateCriterio")->with("objetivo", $objetivo);
 	}
 
 	public function create(Request $request){
@@ -35,13 +35,24 @@ class ObjetivoController extends Controller
 		return redirect('/objetivos');
 
 	}
+	public function createCriterio(request $request){
+		$data = $request->all();
+
+		$criterio = new Criterio();
+		$criterio->peso = $data['peso'];
+		$criterio->descricao = $data['descricao'];
+
+		$criterio->save();
+
+		return redirect('/criterios');
+	}
 
 	public function criterios($id){
 		// Mostras os critérios de um objetivo
 		// Select * from criterios where objetivo_id = $id
 		
-		$objetivo = $this->objetivos[$id];
-		$criterios = $this->criterios;
+		$objetivo = Objetivo::find($id);
+		$criterios = $objetivo->criterios();
 
 		return view("objetivos.criterios")->with(["objetivo" => $objetivo, "criterios" => $criterios]);
 	}
