@@ -1,0 +1,20 @@
+####
+Migrations são classes que o Laravel utiliza para criar a estrutura do banco de dados
+
+#1 - CRIAR UMA MIGRATION por linha de comando, digite
+    ## Cria uma migration na pasta database/migrations  
+    php artisan make:migration <<nome da migration>> --create=<<nome da tabela>>
+
+    ## Cada migration é uma classe que extende de Migration
+    -- Método up(): cria toda a estrutura da tabela
+    -- Método down(): destrói a tabela (para o caso de refresh)
+
+    ##### Para mais informações, acesse e leia o artigo abaixo #######
+    https://imasters.com.br/desenvolvimento/criando-migrations-e-relacionando-tabelas-com-laravel
+
+
+#2 - EXECUTAR AS MIGRATIONS por linha de comando, digite
+    php artisan migrate:refresh
+
+    ## Antes de executar as migrations, certifique-se de que o banco de dados já esteja criando
+    e configure também o arquivo .env para acessá-lo

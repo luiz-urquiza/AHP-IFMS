@@ -3,16 +3,62 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Objetivo;
 
 class ObjetivoController extends Controller
 {
-    public function index(){
-		
-		$objetivos = array(
-			array("id"=>"1", "nome"=>"Comprar um carro", "descricao"=>"Fazer a compra de um carro levando em consideração critérios como preço, conforto, economia, segurança, manutenção, etc."),
-			array("id"=>"2", "nome"=>"Escolher um livro", "descricao"=>"Escolher um livro para leitura baseado em critérios como conhecimento sobre o tema, área de interesse, número de páginas, etc."),
-		);
-		
+	public function index(){
+
+		$objetivos = Objetivo::get(); // SELECT * FROM objetivo
+
 		return view("objetivos.objetivos")->with('objetivos', $objetivos);
+	}
+
+	public function formCreate(){
+		return view("objetivos.formCreateObjetivo");
+	}
+
+	public function formCreateCriterio($id){
+		// Prof Luiz: Alterei aqui
+		$objetivo = Objetivo::find($id);
+		return view("objetivos.formCreateCriterio")->with("objetivo", $objetivo);
+	}
+
+	public function create(Request $request){
+		$data = $request->all();
+
+		$objetivo = new Objetivo();
+		$objetivo->descricao = $data['descricao'];
+
+		$objetivo->save();
+
+		return redirect('/objetivos');
+
+	}
+	public function createCriterio(request $request){
+		$data = $request->all();
+
+		$criterio = new Criterio();
+		$criterio->peso = $data['peso'];
+		$criterio->descricao = $data['descricao'];
+
+		$criterio->save();
+
+		return redirect('/criterios');
+	}
+
+	public function criterios($id){
+		// Mostras os critérios de um objetivo
+		// Select * from criterios where objetivo_id = $id
+		
+		$objetivo = Objetivo::find($id);
+		$criterios = $objetivo->criterios();
+
+		return view("objetivos.criterios")->with(["objetivo" => $objetivo, "criterios" => $criterios]);
+	}
+
+	public function alternativas($id){
+		// Mostras os critérios de um objetivo		
+		return view("objetivos.alternativas")->with('id', $id);
 	}
 }

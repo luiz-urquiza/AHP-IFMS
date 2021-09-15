@@ -35,7 +35,10 @@ os comandos abaixo
 git add --all
 # Confirma a adição de todas as inserções/modificações no git
 git commit -m 'Mensagem qualquer'
-#
-git push
+# Envia as alterações para o repositório remoto
+git push origin
 
 Ou use o Git GUI
+
+elana
+gabriella
