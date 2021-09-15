@@ -17,7 +17,7 @@
 		<thead class="thead-light">
 			<tr>
 				<th>ID</th>
-				<th>Descrição</th>
+				<th>descricao</th>
 			</tr>
 		</thead>
 		<tbody>
