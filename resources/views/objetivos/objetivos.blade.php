@@ -34,7 +34,8 @@
 				<th>Nome</th>
 				<th>Descrição</th>
 				<th>Operações</th>
-				<th>criterios</th>
+				<th>Critérios</th>
+				<th>Operações</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -47,10 +48,14 @@
 				</td>
 				<td>
 					<a href="/objetivo/{{ $objetivo['id'] }}/criterios">Critérios</a>
-					<a href="/objetivo/{{ $objetivo['id'] }}/rnativasrnativas">Alternativas</a>
+					<a href="/objetivo/{{ $objetivo['id'] }}/alternativas">Alternativas</a>
 				</td>
 
-				<td>{{$objetivo->criterios()->count()}}
+				<td>{{$objetivo->criterios()->count()}}</td>
+				<td>
+				<a class="btn btn-warning" href="/objetivo/{{$objetivo->id}}/alterar">Alterar</a>
+				<a class="btn btn-warning" href="/objetivo/{{$objetivo->id}}/excluir">Excluir</a>
+				</td>
 			</tr>
 			@endforeach
 
