@@ -27,7 +27,8 @@
 				<td>{{ $criterio->id }}</td>
 				<td>{{ $criterio->descricao }}</td>
 				<td>
-          
+        <a class="btn btn-warning" href="\criterio\{{$criterio->id}}\alterar">Alterar</a>
+        <a class="btn btn-warning" href="\criterio\{{$criterio->id}}\excluir">Excluir</a>
         </td>
 			</tr>
 			@endforeach
