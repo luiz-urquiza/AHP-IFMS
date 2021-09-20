@@ -18,3 +18,5 @@ Migrations são classes que o Laravel utiliza para criar a estrutura do banco de
 
     ## Antes de executar as migrations, certifique-se de que o banco de dados já esteja criando
     e configure também o arquivo .env para acessá-lo
+
+#3
