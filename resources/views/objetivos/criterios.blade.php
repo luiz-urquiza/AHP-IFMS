@@ -17,14 +17,18 @@
 		<thead class="thead-light">
 			<tr>
 				<th>ID</th>
-				<th>descricao</th>
+				<th>Descrição</th>
+				<th>Operações</th>
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($criterios as $criterio)
+			@foreach($objetivo->criterios as $criterio)
 			<tr>
 				<td>{{ $criterio->id }}</td>
 				<td>{{ $criterio->descricao }}</td>
+				<td>
+          
+        </td>
 			</tr>
 			@endforeach
 		</tbody>
@@ -37,7 +41,7 @@
   <thead class="thead-light">
     <tr>
     <th>Critérios</th>
-    @foreach($criterios as $criterio)
+    @foreach($objetivo->criterios as $criterio)
 			
 				<th scope="col">{{ $criterio["nome"] }}</th>
 		
@@ -45,10 +49,10 @@
          </tr>
   </thead>
   <tbody>
-  @foreach($criterios as $criterio)
+  @foreach($objetivo->criterios as $criterio)
   <tr> 
       <th scope="row">{{$criterio["nome"]}}</th>
-      @foreach($criterios as $criterio2)
+      @foreach($objetivo->criterios as $criterio2)
       @if($criterio["id"] == $criterio2["id"])
       <td>1,000</td>
       @elseif($criterio["id"] < $criterio2["id"])
