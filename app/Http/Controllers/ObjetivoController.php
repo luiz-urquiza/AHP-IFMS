@@ -65,4 +65,36 @@ class ObjetivoController extends Controller
 		// Mostras os critérios de um objetivo		
 		return view("objetivos.alternativas")->with('id', $id);
 	}
+
+	public function formUpdateCriterio($id){
+		// Prof Luiz: Alterei aqui
+		$criterio = Criterio::find($id);
+		return view("objetivos.formUpdateCriterio")->with("criterio", $criterio);
+	}
+
+	public function updateCriterio(request $request){
+		$data = $request->all();
+
+		$criterio = Criterio::find($data['criterio_id']);
+		$criterio->descricao = $data['descricao'];
+		$criterio->peso = 1;
+		$criterio->save();
+
+		$url = "/objetivo/$criterio->objetivo_id/criterios";
+
+		//var_dump($url);
+
+		return redirect($url);
+	}
+
+	public function excluirCriterio($id){
+		// Mostras os critérios de um objetivo
+		$criterio = Criterio::find($id);		
+	
+		$objetivo_id = $criterio->objetivo->id;
+
+		$criterio->delete();
+	
+		return redirect("/objetivo/$objetivo_id/criterios");
+	}
 }

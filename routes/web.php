@@ -31,3 +31,8 @@ Route::get('/objetivo/{id}/criterios', [ObjetivoController::class, 'criterios'])
 //});
 
 Route::get('/objetivo/{id}/alternativas', [ObjetivoController::class, 'alternativas']);
+
+Route::get('/criterio/{id}/excluir', [ObjetivoController::class, 'excluirCriterio']);
+Route::get('/criterio/{id}/alterar', [ObjetivoController::class, 'formUpdateCriterio']);
+
+Route::post('/updateCriterio', [ObjetivoController::class, 'updateCriterio']);
