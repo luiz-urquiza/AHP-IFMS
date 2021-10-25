@@ -53,9 +53,35 @@
 
 				<td>{{$objetivo->criterios()->count()}}</td>
 				<td>
-				<a class="btn btn-warning" href="/objetivo/{{$objetivo->id}}/alterar">Alterar</a>
-				<a class="btn btn-warning" href="/objetivo/{{$objetivo->id}}/excluir">Excluir</a>
-				<!-- Modal aqui -->
+					<a class="btn btn-info btn-sm" href="/objetivo/{{$objetivo->id}}/alterar">Alterar</a>
+					<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#excluir_{{$objetivo->id}}">Excluir</button>
+				
+					<!-- Modal aqui -->
+					<!-- The Modal -->
+					<div class="modal" id="excluir_{{$objetivo->id}}">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">Deseja excluir o objetivo #{{$objetivo->id}}?</h4>
+								<button type="button" class="close" data-dismiss="modal"></button>
+							</div>
+
+							<!-- Modal body -->
+							<div class="modal-body">
+								Descrição: {{$objetivo->descricao}}
+							</div>
+
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<a class="btn btn-warning" href="/objetivo/{{$objetivo->id}}/excluir">Excluir</a>
+								<button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+							</div>
+
+							</div>
+						</div>
+					</div>
 				</td>
 			</tr>
 			@endforeach
