@@ -55,6 +55,7 @@
 				<td>
 				<a class="btn btn-warning" href="/objetivo/{{$objetivo->id}}/alterar">Alterar</a>
 				<a class="btn btn-warning" href="/objetivo/{{$objetivo->id}}/excluir">Excluir</a>
+				<!-- Modal aqui -->
 				</td>
 			</tr>
 			@endforeach
