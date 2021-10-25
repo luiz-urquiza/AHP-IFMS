@@ -97,4 +97,35 @@ class ObjetivoController extends Controller
 	
 		return redirect("/objetivo/$objetivo_id/criterios");
 	}
+
+
+	public function updateObjetivo(request $request){
+		$data = $request->all();
+
+		$objetivo = Objetivo::find($data['objetivo_id']);
+		$objetivo->descricao = $data['descricao'];
+	
+		$objetivo->save();
+
+		$url = "/objetivos";
+
+		//var_dump($url);
+
+		return redirect($url);
+	}
+
+	public function formUpdateObjetivo($id){
+		// Prof Luiz: Alterei aqui
+		$objetivo = Objetivo::find($id);
+		return view("objetivos.formUpdateObjetivo")->with("objetivo", $objetivo);
+	}
+
+	public function excluirObjetivo($id){
+		// Mostras os critérios de um objetivo
+		$objetivo = Objetivo::find($id);		
+	
+		$objetivo->delete();
+	
+		return redirect("/objetivos");
+	}
 }
