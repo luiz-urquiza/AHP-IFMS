@@ -20,7 +20,7 @@ class ObjetivoController extends Controller
 	}
 
 	public function formCreateCriterio($id){
-		// Prof Luiz: Alterei aqui
+		// Prof Luiz: Alterei aqui;
 		$objetivo = Objetivo::find($id);
 		return view("objetivos.formCreateCriterio")->with("objetivo", $objetivo);
 	}
