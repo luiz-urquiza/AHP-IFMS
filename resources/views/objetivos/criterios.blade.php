@@ -33,7 +33,38 @@
           <td>
             <div class="btn-group">
           <a class="btn btn-sm btn-primary" href="\criterio\{{$criterio->id}}\alterar">Alterar</a>
-          <a class="btn btn-sm btn-danger" href="\criterio\{{$criterio->id}}\excluir">Excluir</a>
+          <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#excluir_{{$criterio->id}}">Excluir</button>
+
+              <!-- Modal aqui -->
+              <!-- The Modal -->
+              <div class="modal" id="excluir_{{$criterio->id}}">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Deseja excluir o Criterio #{{$criterio->id}}?</h4>
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <strong>Descrição:</strong> {{$criterio->descricao}}
+                  </div>
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-danger" href="/criterio/{{$criterio->id}}/excluir">Excluir</a>
+                    </div>
+                  </div>
+
+                  </div>
+                </div>
+              </div>
+
+
             </div>
           </td>
         </tr>
