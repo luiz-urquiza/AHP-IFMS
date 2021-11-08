@@ -31,10 +31,8 @@
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Nome</th>
 				<th>Descrição</th>
-				<th>Operações</th>
-				<th>Critérios</th>
+				<th>Visualizar</th>
 				<th>Operações</th>
 			</tr>
 		</thead>
@@ -42,20 +40,21 @@
 			@foreach ($objetivos as $objetivo)
 			<tr>
 				<td>{{ $objetivo['id'] }}</td>
-				<td>{{ $objetivo['nome'] }}</td>
 				<td>
 				{{ $objetivo['descricao'] }}
 				</td>
 				<td>
-					<a href="/objetivo/{{ $objetivo['id'] }}/criterios">Critérios</a>
-					<a href="/objetivo/{{ $objetivo['id'] }}/alternativas">Alternativas</a>
+					<div class="btn-group">
+					<a href="/objetivo/{{ $objetivo['id'] }}/criterios" class="btn btn-sm btn-primary" data-toggle="tooltip" title="{{$objetivo->criterios()->count()}}">Critérios</a>
+					<a href="/objetivo/{{ $objetivo['id'] }}/alternativas" class="btn btn-sm btn-primary" data-toggle="tooltip" title="teste">Alternativas</a>
+					</div>
 				</td>
 
-				<td>{{$objetivo->criterios()->count()}}</td>
 				<td>
-					<a class="btn btn-info btn-sm" href="/objetivo/{{$objetivo->id}}/alterar">Alterar</a>
+						<div class="btn-group">
+					<a class="btn btn-primary btn-sm" href="/objetivo/{{$objetivo->id}}/alterar">Alterar</a>
 					<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#excluir_{{$objetivo->id}}">Excluir</button>
-				
+						</div>
 					<!-- Modal aqui -->
 					<!-- The Modal -->
 					<div class="modal" id="excluir_{{$objetivo->id}}">
@@ -70,13 +69,15 @@
 
 							<!-- Modal body -->
 							<div class="modal-body">
-								Descrição: {{$objetivo->descricao}}
+								<strong>Descrição:</strong> {{$objetivo->descricao}}
 							</div>
 
 							<!-- Modal footer -->
 							<div class="modal-footer">
-								<a class="btn btn-warning" href="/objetivo/{{$objetivo->id}}/excluir">Excluir</a>
-								<button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+								<div class="btn-group">
+								<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+								<a class="btn btn-danger" href="/objetivo/{{$objetivo->id}}/excluir">Excluir</a>
+								</div>
 							</div>
 
 							</div>

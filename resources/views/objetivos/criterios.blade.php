@@ -9,34 +9,42 @@
 @stop
 
 @section ('conteudo')
-	<h3>Critérios do Objetivo {{ $objetivo["id"] }} - {{ $objetivo["descricao"] }}</h3>
-	<div>
-		<a class="btn btn-primary" href="/formCreateCriterio/{{ $objetivo['id'] }}">Novo Critério</a>
-	</div><hr>
-	<table class="table">
-		<thead class="thead-light">
-			<tr>
-				<th>ID</th>
-				<th>Descrição</th>
-				<th>Operações</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($objetivo->criterios as $criterio)
-			<tr>
-				<td>{{ $criterio->id }}</td>
-				<td>{{ $criterio->descricao }}</td>
-				<td>
-        <a class="btn btn-warning" href="\criterio\{{$criterio->id}}\alterar">Alterar</a>
-        <a class="btn btn-warning" href="\criterio\{{$criterio->id}}\excluir">Excluir</a>
-        </td>
-			</tr>
-			@endforeach
-		</tbody>
-	</table><hr>
-	<div>
-		<a class="btn btn-primary" href="/formCreateCriterio/{{ $objetivo['id'] }}">Novo Critério</a>
-	</div>
+<div class="card">
+  <div class="card-header">
+    <h3>Critérios do Objetivo {{ $objetivo["id"] }} - {{ $objetivo["descricao"] }}</h3>
+    <div>
+      <a class="btn btn-primary" href="/formCreateCriterio/{{ $objetivo['id'] }}">Novo Critério</a>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>#</th>
+          <th>Descrição</th>
+          <th>Operações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($objetivo->criterios as $criterio)
+        <tr>
+          <td>{{ $criterio->id }}</td>
+          <td>{{ $criterio->descricao }}</td>
+          <td>
+            <div class="btn-group">
+          <a class="btn btn-sm btn-primary" href="\criterio\{{$criterio->id}}\alterar">Alterar</a>
+          <a class="btn btn-sm btn-danger" href="\criterio\{{$criterio->id}}\excluir">Excluir</a>
+            </div>
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+    <div>
+      <a class="btn btn-primary" href="/formCreateCriterio/{{ $objetivo['id'] }}">Novo Critério</a>
+    </div>
+  </div>
+</div>
 <!--
 <table class="table">
   <thead class="thead-light">
