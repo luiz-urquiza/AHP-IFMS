@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ObjetivoController;
+use App\Http\Controllers\AHPController;
 
 
 
@@ -42,3 +43,5 @@ Route::get('/objetivo/{id}/alterar', [ObjetivoController::class, 'formUpdateObje
 Route::get('/objetivo/{id}/excluir', [ObjetivoController::class, 'excluirObjetivo']);
 
 Route::post('/updateObjetivo', [ObjetivoController::class, 'updateObjetivo']);
+
+Route::get('/AHP', [AHPController::class, 'AHP']);
