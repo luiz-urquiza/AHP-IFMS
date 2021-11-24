@@ -66,5 +66,57 @@ class DatabaseSeeder extends Seeder
 			['id_node' => 4, 'id_node1' => 5, 'id_node2' => 6, 'score' => 1/9],
 		]);
 
+
+		//Problema 2 Escolha de Líder
+		//https://en.wikipedia.org/wiki/Analytic_hierarchy_process_%E2%80%93_leader_example
+		DB::table('node')->insert([
+			['level' => 0, 'descr' => 'Choosing a Leader'], 
+			['level' => 1, 'descr' => 'Experience'],
+			['level' => 1, 'descr' => 'Education'],
+			['level' => 1, 'descr' => 'Charisma'],
+			['level' => 1, 'descr' => 'Age'],
+			['level' => 2, 'descr' => 'Tom'],
+			['level' => 2, 'descr' => 'Dick'],
+			['level' => 2, 'descr' => 'Harry'],
+		]);
+
+		//Julgamento dos Critérios
+		DB::table('judments')->insert([
+			['id_node' => 7, 'id_node1' => 8, 'id_node2' => 9, 'score' => 4], //Experience x Education
+			['id_node' => 7, 'id_node1' => 8, 'id_node2' => 10, 'score' => 3], //Experience x Charisma
+			['id_node' => 7, 'id_node1' => 8, 'id_node2' => 11, 'score' => 7], //Experience x Age
+			['id_node' => 7, 'id_node1' => 9, 'id_node2' => 10, 'score' => 1/3], //Education x Charisma
+			['id_node' => 7, 'id_node1' => 9, 'id_node2' => 11, 'score' => 3], //Education x Age
+			['id_node' => 7, 'id_node1' => 10, 'id_node2' => 11, 'score' => 5], //Age x Charisma
+		]);
+
+		//Julgamento das Alternativas com relação a Experience
+		DB::table('judments')->insert([
+			['id_node' => 8, 'id_node1' => 12, 'id_node2' => 13, 'score' => 3],
+			['id_node' => 8, 'id_node1' => 12, 'id_node2' => 14, 'score' => 1/5],
+			['id_node' => 8, 'id_node1' => 13, 'id_node2' => 14, 'score' => 1/7],
+		]);
+
+		//Julgamento das Alternativas com relação a Education
+		DB::table('judments')->insert([
+			['id_node' => 9, 'id_node1' => 12, 'id_node2' => 13, 'score' => 3],
+			['id_node' => 9, 'id_node1' => 12, 'id_node2' => 14, 'score' => 1/5],
+			['id_node' => 9, 'id_node1' => 13, 'id_node2' => 14, 'score' => 1/7],
+		]);
+
+		//Julgamento das Alternativas com relação a Charisma
+		DB::table('judments')->insert([
+			['id_node' => 10, 'id_node1' => 12, 'id_node2' => 13, 'score' => 5],
+			['id_node' => 10, 'id_node1' => 12, 'id_node2' => 14, 'score' => 9],
+			['id_node' => 10, 'id_node1' => 13, 'id_node2' => 14, 'score' => 4],
+		]);
+
+		//Julgamento das Alternativas com relação a Age
+		DB::table('judments')->insert([
+			['id_node' => 11, 'id_node1' => 12, 'id_node2' => 13, 'score' => 1/3],
+			['id_node' => 11, 'id_node1' => 12, 'id_node2' => 14, 'score' => 5],
+			['id_node' => 11, 'id_node1' => 13, 'id_node2' => 14, 'score' => 9],
+		]);
+
     }
 }

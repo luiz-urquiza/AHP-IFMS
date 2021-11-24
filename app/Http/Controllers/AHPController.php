@@ -158,18 +158,14 @@ class AHPController extends Controller {
 			array(9,1)
 		);
 		
-		$j_criteria = AHPController::GetCriteriaJudmentsMatrix(1, 0);
-		$j_alternatives = AHPController::GetAlternativesJudmentsMatrix(1, 0);
+		$j_criteria = AHPController::GetCriteriaJudmentsMatrix(7, 0);
+		$j_alternatives = AHPController::GetAlternativesJudmentsMatrix(7, 0);
 
 		  AHPController::Normalize($j_criteria);
 		  AHPController::GetPriority($j_criteria);
 		  AHPController::CheckConsistency($j_criteria);
-		  AHPController::GetCriteriaJudmentsMatrix(1, 0);
-		  AHPController::GetAlternativesJudmentsMatrix(1, 0);
 
 		  print_r(AHPController::FinalPriority($j_criteria, $j_alternatives));
 
-	}
-
-	
+	}	
 }
