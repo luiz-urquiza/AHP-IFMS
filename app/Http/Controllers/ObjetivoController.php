@@ -57,7 +57,7 @@ class ObjetivoController extends Controller
 		// Select * from criterios where objetivo_id = $id
 		
 		$objetivo = Objetivo::find($id);
-	
+
 		return view("objetivos.criterios")->with(["objetivo" => $objetivo]);
 	}
 
