@@ -47,16 +47,20 @@ class AHPController extends Controller {
 	}
 
 	public function CheckConsistency($julgamentos) 	{
-		$saaty = array(0,0,0.00001,0.58,0.9,1.12,1.24,1.32,1.41,1.45,1.49);
+		$saaty = array(0,0,0.00001,0.5247,0.8816,1.1086,1.2479,1.3417,1.4057,1.4499,1.4854);
 		$priority = AHPController::GetPriority($julgamentos);
 		$dim = count($julgamentos);
-		$tmp = 0;
-
+		
+		$vector = array();
 		for($i = 0; $i < $dim; $i++) {
+			$tmp = 0;
 			for($j = 0; $j < $dim; $j++) {
 				$tmp = $tmp + ($julgamentos[$i][$j] * $priority[$j]);
 			}
+			array_push($vector, $tmp/$priority[$i]);
 		}
+		$tmp = array_sum($vector)/count($vector);
+		
 		$ci = ($tmp-$dim)/($dim - 1);
 		$cr = $ci/$saaty[$dim];
 		
@@ -89,7 +93,7 @@ class AHPController extends Controller {
 
 	public function GetCriteriaJudmentsMatrix($objective, $level) {
 		//$judments = Judments::orderBy('id', 'DESC')->get()->where('id_node', 1)->where('id_node1', 2);
-		$query = Judments::orderBy('id_node1', 'ASC')->get()->where('id_node', $objective);
+		$query = Judments::orderBy('id_node1', 'ASC')->orderBy('id_node2', 'ASC')->get()->where('id_node', $objective);
 		$judments = array();
 		$k = 0;
 		foreach($query as $q) {
@@ -119,7 +123,7 @@ class AHPController extends Controller {
 
 	public function GetAlternativesJudmentsMatrix($objective, $level) {
 		//$judments = Judments::orderBy('id', 'DESC')->get()->where('id_node', 1)->where('id_node1', 2);
-		$query = Judments::orderBy('id_node1', 'ASC')->get()->where('id_node', $objective);
+		$query = Judments::orderBy('id_node1', 'ASC')->orderBy('id_node2', 'ASC')->get()->where('id_node', $objective);
 
 		$criteria = array();
 
@@ -139,33 +143,16 @@ class AHPController extends Controller {
 	}
 
 	public function AHP() 	{
-		$j_criteria = array (
-			array(1,7,3),
-			array(1/7,1,1/3),
-			array(1/3,3,1)
-		  );
-		  $j_alternatives = array();
-		$j_alternatives[0] = array (
-			array(1,7),
-			array(1/7,1)
-		);
-		$j_alternatives[1] = array (
-			array(1,1/5),
-			array(5,1)
-		);
-		$j_alternatives[2] = array (
-			array(1,1/9),
-			array(9,1)
-		);
 		
 		$j_criteria = AHPController::GetCriteriaJudmentsMatrix(7, 0);
 		$j_alternatives = AHPController::GetAlternativesJudmentsMatrix(7, 0);
+		
+		AHPController::Normalize($j_criteria);
+		AHPController::GetPriority($j_criteria);
+		AHPController::CheckConsistency($j_criteria);
 
-		  AHPController::Normalize($j_criteria);
-		  AHPController::GetPriority($j_criteria);
-		  AHPController::CheckConsistency($j_criteria);
-
-		  print_r(AHPController::FinalPriority($j_criteria, $j_alternatives));
+		print_r(AHPController::FinalPriority($j_criteria, $j_alternatives));
+		  //echo "<hr>".AHPController::CheckConsistency($j_criteria)."<hr>";
 
 	}	
 }
