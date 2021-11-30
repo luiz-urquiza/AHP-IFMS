@@ -30,8 +30,8 @@
 	</td>
 	<td>
 		<div class="btn-group">
-			<a href="/objetivo/{{ $o['id'] }}/criterios" class="btn btn-sm btn-primary" data-toggle="tooltip" title="">Criteria</a>
-			<a href="/o/{{ $o['id'] }}/alternativas" class="btn btn-sm btn-primary" data-toggle="tooltip" title="teste">Alternatives</a>
+			<a href="/nodes/{{ $o['id'] }}/criteria" class="btn btn-sm btn-primary" data-toggle="tooltip" title="">Criteria</a>
+			<a href="/nodes/{{ $o['id'] }}/alternatives" class="btn btn-sm btn-primary" data-toggle="tooltip" title="teste">Alternatives</a>
 		</div>
 	</td>
 
