@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ObjetivoController;
 use App\Http\Controllers\AHPController;
-
-
+use App\Http\Controllers\NodesController;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -45,3 +44,5 @@ Route::get('/objetivo/{id}/excluir', [ObjetivoController::class, 'excluirObjetiv
 Route::post('/updateObjetivo', [ObjetivoController::class, 'updateObjetivo']);
 
 Route::get('/AHP', [AHPController::class, 'AHP']);
+
+Route::get('/nodes', [NodesController::class, 'index']);
