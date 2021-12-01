@@ -8,8 +8,6 @@ use App\Models\Judments;
 use Illuminate\Http\Request;
 
 class NodesController extends Controller {
-
-    public $funny = "Bom dia o sol já nasceu lá na fazendinha...";
     
     public function index() {
        $objectives = Node::get()->where('level',0); 
@@ -26,11 +24,14 @@ class NodesController extends Controller {
             ->orOn('judments.id_node2', '=', 'node.id');
             })
             ->where('judments.id_node', $id)
-            ->select('node.descr')
+            ->select('node.id','node.descr')
             ->distinct()
             ->get();
-
-        return view("objetivos.criteria")->with('criteria', $criteria);
+        $objective = Node::get()->where('id',$id);
+        $goal = $objective[$id-1];
+        
+        //return view("objetivos.criterios")->with(["objetivo" => $objetivo]);
+        return view("objetivos.criteria")->with('criteria', $criteria)->with('goal', $goal);
         
     }
 
@@ -63,7 +64,30 @@ class NodesController extends Controller {
         ->get();
 
         return view("objetivos.alternatives")->with('alternatives', $alternatives);
+    }
+
+    public function comparisons($up, $id) {
+        # code...
+        $funny = "Bom dia o sol já nasceu lá na fazendinha...";
+        $criteria = Judments::
+            join('node', function ($join) {
+            $join->on('judments.id_node1', '=', 'node.id')
+            ->orOn('judments.id_node2', '=', 'node.id');
+            })
+            ->where('judments.id_node', $up)
+            ->select('node.id','node.descr')
+            ->distinct()
+            ->get();
         
+        foreach($criteria as $c) {
+            if($c->id == $id) $c1 = $c->descr;
+        }
+        
+        foreach($criteria as $c) {
+            if($c->id != $id) {
+                echo $c1." X ".$c->descr."<hr>";
+            }
+        }        
     }
 
 }
