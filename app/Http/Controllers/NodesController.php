@@ -59,35 +59,48 @@ class NodesController extends Controller {
         ->orOn('judments.id_node2', '=', 'node.id');
         })
         ->whereIn('judments.id_node', $v)
-        ->select('node.descr')
+        ->select('node.id','node.descr')
         ->distinct()
         ->get();
 
-        return view("objetivos.alternatives")->with('alternatives', $alternatives);
+        $objective = Node::get()->where('id',$id);
+        $goal = $objective[$id-1];
+
+        return view("objetivos.alternatives")->with('alternatives', $alternatives)->with('goal', $goal);;
     }
 
     public function comparisons($up, $id) {
-        # code...
-        $funny = "Bom dia o sol já nasceu lá na fazendinha...";
+        $ids = array();
+
+        $query = Judments::
+            join('node', function ($join) {
+            $join->on('judments.id_node1', '=', 'node.id')
+            ->orOn('judments.id_node2', '=', 'node.id');
+            })
+            ->where('node.id','=', $id)
+            ->select('judments.id_node')
+            ->distinct()
+            ->get();
+
+        foreach($query as $q) 
+            array_push($ids, $q->id_node);
+        
+        $objective = Node::get()->whereIn('id',$ids);
+
         $criteria = Judments::
             join('node', function ($join) {
             $join->on('judments.id_node1', '=', 'node.id')
             ->orOn('judments.id_node2', '=', 'node.id');
             })
-            ->where('judments.id_node', $up)
+            ->where('node.id', '!=', $id)
+            ->whereIn('judments.id_node', $ids)
             ->select('node.id','node.descr')
             ->distinct()
             ->get();
+
+        $target = Node::where('id',$id)->get();
         
-        foreach($criteria as $c) {
-            if($c->id == $id) $c1 = $c->descr;
-        }
-        
-        foreach($criteria as $c) {
-            if($c->id != $id) {
-                echo $c1." X ".$c->descr."<hr>";
-            }
-        }        
+        return view("objetivos.comparisons")->with('itens', $criteria)->with('goal', $objective)->with('target', $target);       
     }
 
 }

@@ -5,6 +5,9 @@
 		<li class="nav-item">
 			<a class="nav-link" href="/os">Objetivos</a>
 		</li>
+        <li class="nav-item">
+			<a class="nav-link" href="/nodes">Nodes</a>
+		</li>
     </ul>
 
 @stop
@@ -13,9 +16,7 @@
 <div class="card">
   <div class="card-header">
     <h3>Criteria from Decision Problem: {{ $goal->descr }}</h3>
-    <div>
-      <a class="btn btn-primary" href="#">Novo Critério</a>
-    </div>
+
   </div>
   <div class="card-body">
     <table class="table">
@@ -60,20 +61,17 @@
                     <a class="btn btn-danger" href="/criterio/{{$c->id}}/excluir">Excluir</a>
                     </div>
                   </div>
-
                   </div>
                 </div>
               </div>
-
-
             </div>
           </td>
         </tr>
         @endforeach
       </tbody>
     </table>
-    <div>
-      <a class="btn btn-primary" href="#">Novo Critério</a>
+    <div><hr>
+      <a class="btn btn-primary" href="#">New Criterion</a>
     </div>
   </div>
 </div>
