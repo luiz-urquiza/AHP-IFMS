@@ -12,7 +12,6 @@ class NodesController extends Controller {
     public function index() {
        $objectives = Node::get()->where('level',0); 
        return view("objetivos.nodes")->with('objectives', $objectives);
-
     }
 
     public function criteria($id) {

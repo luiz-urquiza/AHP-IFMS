@@ -26,7 +26,6 @@
                     <td>{{$target[0]->descr}} x {{ $c->descr }}</td>
                     <td>
                         <select class="custom-select">
-                            <option value="1">1 - {{$target[0]->descr}} is indifferent to {{ $c->descr }}</option>
                             <option value="1/9">1/9 - {{ $c->descr }} is extremely preferable to {{$target[0]->descr}}}</option>
                             <option value="1/8">1/8 - Intermediate judment</option>
                             <option value="1/7">1/7 - {{ $c->descr }} is very strongly preferable to {{$target[0]->descr}}</option>
@@ -35,6 +34,7 @@
                             <option value="1/4">1/4 - Intermediate judment </option>
                             <option value="1/3">1/3 - {{ $c->descr }} is moderately preferable to {{$target[0]->descr}}</option>
                             <option value="1/2">1/2 - Intermediate judment </option>
+                            <option value="1" selected>1 - {{$target[0]->descr}} is indifferent to {{ $c->descr }}</option>
                             <option value="2">2 - Intermediate judment </option>
                             <option value="3">3 - {{$target[0]->descr}} is moderately preferable to {{ $c->descr }} </option>
                             <option value="4">4 - Intermediate judment</option>

@@ -10,13 +10,11 @@
 		</li>
     </ul>
 
-
 @stop
-
 @section ('conteudo')
 <div class="card">
   <div class="card-header">
-    <h3>Criteria from Decision Problem: {{ $goal->descr }}</h3>
+    <h3>Alternatives to Decision Problem: {{ $goal->descr }}</h3>
   </div>
   <div class="card-body">
     <table class="table">
@@ -61,22 +59,18 @@
                     <a class="btn btn-danger" href="/criterio/{{$c->id}}/excluir">Excluir</a>
                     </div>
                   </div>
-
                   </div>
                 </div>
               </div>
-
-
             </div>
           </td>
         </tr>
         @endforeach
       </tbody>
-    </table>
+    </table><hr>
     <div>
-      <a class="btn btn-primary" href="#">Novo Critério</a>
+      <a class="btn btn-primary" href="#">New Alternative</a>
     </div>
   </div>
 </div>
-
 @stop

@@ -13,11 +13,14 @@
 
 @section ('conteudo')
 <!-- {{ $x = 0 }}  -->
+<div>
+	<a class="btn btn-primary" href="/formCreateObjetivo">New Decision Problem</a>
+</div><hr>
 <table class="table table-bordered table-striped table-hover">
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Decision Problem</th>
+				<th>Decision Problems</th>
 				<th>View</th>
 				<th>Operations</th>
 			</tr>
