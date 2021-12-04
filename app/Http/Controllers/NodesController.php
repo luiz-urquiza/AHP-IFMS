@@ -119,11 +119,30 @@ class NodesController extends Controller {
 	}
 
     public function removeNode($id) {
-        $node = Node::find($id);		
-	
-		
+        $v = array($id);
+        $i = 0;
 
-		$criterio->delete();
-        echo "Bom dia o sol já nasceu lá na fazendinha...";
+        do {
+            $query = Judments::
+            join('node', function ($join) {
+            $join->on('judments.id_node1', '=', 'node.id')
+            ->orOn('judments.id_node2', '=', 'node.id');
+            })
+            ->where('judments.id_node', $v[$i])
+            ->select('node.id','node.descr')
+            ->distinct()
+            ->get();
+            if(count($query) > 0) {
+                foreach($query as $q)
+                    array_push($v, $q->id);
+            } 
+            $i++;
+        } while($i < count($v));
+        $v = array_unique($v);
+        Node::whereIn('id', $v)->delete();
+        Judments::whereIn('id_node', $v)->delete();
+        Judments::whereIn('id_node1', $v)->delete();
+        Judments::whereIn('id_node2', $v)->delete();
+        return redirect("/nodes");
     }
 }
