@@ -27,8 +27,6 @@ class NodesController extends Controller {
             ->get();
         $objective = Node::get()->where('id',$id);
         $goal = $objective[$id-1];
-        
-        //return view("objetivos.criterios")->with(["objetivo" => $objetivo]);
         return view("objetivos.criteria")->with('criteria', $criteria)->with('goal', $goal);
         
     }
