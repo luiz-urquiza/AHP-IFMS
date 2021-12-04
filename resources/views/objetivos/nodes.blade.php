@@ -14,8 +14,7 @@
 @section ('conteudo')
 <!-- {{ $x = 0 }}  -->
 <div>
-	<a class="btn btn-primary" href="/formCreateObjetivo">New Decision Problem</a>
-</div><hr>
+	<a class="btn btn-primary" href="/formCreateNode">New Decision Problem</a>
 <table class="table table-bordered table-striped table-hover">
 		<thead>
 			<tr>
@@ -58,7 +57,7 @@
 					<div class="modal-footer">
 						<div class="btn-group">
     						<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-							<a class="btn btn-danger" href="/o/{{$o->id}}/excluir">Remove</a>
+							<a class="btn btn-danger" href="/node/{{$o->id}}/remove">Remove</a>
 						</div>
 					</div>
 				</div>

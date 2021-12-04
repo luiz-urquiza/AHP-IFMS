@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Objetivo;
 use App\Models\Node;
 use App\Models\Judments;
-
 use Illuminate\Http\Request;
 
 class NodesController extends Controller {
@@ -102,4 +101,29 @@ class NodesController extends Controller {
         return view("objetivos.comparisons")->with('itens', $criteria)->with('goal', $objective)->with('target', $target);       
     }
 
+    public function formCreateNode() {
+        return view("objetivos.formCreateNode");
+    }
+
+	public function createNode(Request $request){
+        
+		$data = $request->all();
+
+		$node = new Node();
+        $node->level = 0;
+		$node->descr = $data['descricao'];
+
+		$node->save();
+
+		return redirect('/nodes');
+	}
+
+    public function removeNode($id) {
+        $node = Node::find($id);		
+	
+		
+
+		$criterio->delete();
+        echo "Bom dia o sol já nasceu lá na fazendinha...";
+    }
 }
