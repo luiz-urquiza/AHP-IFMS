@@ -26,9 +26,10 @@ class NodesController extends Controller {
             ->distinct()
             ->get();
         $objective = Node::get()->where('id',$id);
-        $goal = $objective[$id-1];
+        echo count($objective);
+        foreach($objective as $o) 
+            $goal = $o;
         return view("objetivos.criteria")->with('criteria', $criteria)->with('goal', $goal);
-        
     }
 
     public function alternatives($id)  {

@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Objetivo;
 use App\Models\Criterio;
 
-class ObjetivoController extends Controller
-{
+class ObjetivoController extends Controller {
 	public function index(){
 
 		$objetivos = Objetivo::get(); // SELECT * FROM objetivo

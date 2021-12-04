@@ -33,9 +33,9 @@
           <td>{{ $c->id }}</td>
           <td>{{ $c->descr }}</td>
           <td>
-            <div class="btn-group">
-          <a class="btn btn-sm btn-primary" href="\comparisons\{{$goal->id}}\{{$c->id}}">Comparisons</a>
-          <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#excluir_{{$c->id}}">Remove</button>
+          <div class="btn-group">
+            <a class="btn btn-sm btn-primary" href="\comparisons\{{$goal->id}}\{{$c->id}}">Comparisons</a>
+            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#excluir_{{$c->id}}">Remove</button>
 
               <!-- Modal aqui -->
               <!-- The Modal -->
@@ -71,9 +71,63 @@
       </tbody>
     </table>
     <div><hr>
-      <a class="btn btn-primary" href="#">New Criterion</a>
+    
+    
+    <div class="btn-group">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rexcluir_{{$c->id}}">New Criterion</button>
+
+              <!-- Modal aqui -->
+              <!-- The Modal -->
+              <div class="modal" id="rexcluir_{{$c->id}}">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">How many criteria would you like to add? (at least two)</h4>
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <form method="POST" action="/createNode">
+                        @csrf
+                      <div class="form-group">
+                        <label for="descricao">Name:</label>
+                        <select class="custom-select">
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                      </div>
+                      <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">Go</button>
+                        <a class="btn btn-danger" href="/nodes">Cancel</a>
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <div class="btn-group">
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+
     </div>
   </div>
 </div>
+
+    
 
 @stop
