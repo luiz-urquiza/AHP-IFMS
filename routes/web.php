@@ -49,7 +49,7 @@ Route::get('/nodes', [NodesController::class, 'index']);
 Route::get('/nodes/{id}/criteria', [NodesController::class, 'criteria']);
 Route::get('/nodes/{id}/alternatives', [NodesController::class, 'alternatives']);
 Route::get('/comparisons/{up}/{id}', [NodesController::class, 'comparisons']);
-Route::get('/formCreateNode', [NodesController::class, 'formCreateNode']);
-Route::post('/createNode', [NodesController::class, 'createNode']);
+Route::post('/formCreateNode/{up}', [NodesController::class, 'formCreateNode']);
+Route::post('/createNode/{up}', [NodesController::class, 'createNode']);
 Route::get('/node/{id}/remove', [NodesController::class, 'removeNode']);
 

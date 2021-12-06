@@ -14,7 +14,14 @@
 @section ('conteudo')
 <!-- {{ $x = 0 }}  -->
 <div>
-	<a class="btn btn-primary" href="/formCreateNode">New Decision Problem</a>
+
+<form method="POST" action="/formCreateNode/0">
+	@csrf
+	<div class="btn-group">
+	<button type="submit" class="btn btn-primary">New Decision Problem</button>
+	</div>
+</form>
+
 <table class="table table-bordered table-striped table-hover">
 		<thead>
 			<tr>

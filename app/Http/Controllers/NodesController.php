@@ -26,7 +26,6 @@ class NodesController extends Controller {
             ->distinct()
             ->get();
         $objective = Node::get()->where('id',$id);
-        echo count($objective);
         foreach($objective as $o) 
             $goal = $o;
         return view("objetivos.criteria")->with('criteria', $criteria)->with('goal', $goal);
@@ -100,21 +99,78 @@ class NodesController extends Controller {
         return view("objetivos.comparisons")->with('itens', $criteria)->with('goal', $objective)->with('target', $target);       
     }
 
-    public function formCreateNode() {
-        return view("objetivos.formCreateNode");
+    public function formCreateNode($up, Request $request) {
+        
+        $data = $request->all();
+        $descr = "Node";
+        $itens = array();
+        $ids = array();
+        if($up == 0) {
+            array_push($itens, $up);
+            $nodes = 1;
+            $descr = "Decision Problem";
+            return view("objetivos.formCreateNode")->with('itens', $itens)->with('nodes', $nodes)->with('descr', $descr)->with('up',$up);
+        
+        } elseif($data['type'] == 1) {
+
+            // @query = Judments::select('id_node1','id_node2')->where('id_node', $up);
+            // foreach($query as $q) { array_push($ids, $q->id_node1); array_push($ids, $q->id_node2); }
+            // $ids = array_unique($ids);
+            
+            // echo "Alternativas";
+        
+        } else {
+            $query = Judments::
+            join('node', function ($join) {
+            $join->on('judments.id_node1', '=', 'node.id')
+            ->orOn('judments.id_node2', '=', 'node.id');
+            })
+            ->where('node.id','=', $up)
+            ->select('judments.id_node')
+            ->distinct()
+            ->get();
+
+        foreach($query as $q) 
+            array_push($itens, $q->id_node);
+
+            print_r($itens);
+
+            return view("objetivos.formCreateNode")->with('itens', $itens)->with('nodes', $data['nodes'])->with('descr', $descr)->with('up',$up); 
+        }
     }
 
-	public function createNode(Request $request){
+	public function createNode($up, Request $request){
         
 		$data = $request->all();
+        $level = 0;
+        $query = Node::where('id', $up);
+        $ids = array();
 
-		$node = new Node();
-        $node->level = 0;
-		$node->descr = $data['descricao'];
+        if( $query->count() > 0 ) {
+            $level = 1 + $query->first()->level;
+        }
 
-		$node->save();
-
-		return redirect('/nodes');
+        for($i = 0; $i < count($data['descricao']); $i++){
+            $node = new Node();
+            $node->level = $level;
+            $node->descr = $data['descricao'][$i];
+            $node->save();
+            array_push($ids, $node->id);
+        }
+        
+        if($level > 0) {
+            for($i = 0; $i < count($ids); $i++) {
+                for($j = $i+1; $j < count($ids); $j++) {
+                    $judment = new Judments();
+                    $judment->id_node = $up;
+                    $judment->id_node1 = $ids[$i];
+                    $judment->id_node2 = $ids[$j];
+                    $judment->score = 1;
+                    $judment->save();
+                }
+            }
+        }
+        return redirect('/nodes');
 	}
 
     public function removeNode($id) {

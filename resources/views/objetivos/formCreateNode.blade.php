@@ -13,15 +13,16 @@
 @section ('conteudo')
 <div class="card">
   <div class="card-header">
-    <h3>Create new Decision Problem</h3>
+    <h3>Create new {{$descr}}</h3>
   </div>
   <div class="card-body">
-    <form method="POST" action="/createNode">
+    <form method="POST" action="/createNode/{{$up}}">
         @csrf
-
         <div class="form-group">
+        @for ($i = 0; $i < $nodes; $i++)
         <label for="descricao">Name:</label>
-        <input type="text" class="form-control" placeholder="Decision Problem Name" id="descricao" name="descricao">
+        <input type="text" class="form-control" placeholder="" id="descricao" name="descricao[{{$i}}]">
+        @endfor
       </div>
       <div class="btn-group">
         <button type="submit" class="btn btn-primary">Save</button>
@@ -31,3 +32,4 @@
   </div>
 </div>
 @stop
+

@@ -74,11 +74,11 @@
     
     
     <div class="btn-group">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rexcluir_{{$c->id}}">New Criterion</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rexcluir_{{$goal->id}}">New Criterion</button>
 
               <!-- Modal aqui -->
               <!-- The Modal -->
-              <div class="modal" id="rexcluir_{{$c->id}}">
+              <div class="modal" id="rexcluir_{{$goal->id}}">
                 <div class="modal-dialog">
                   <div class="modal-content">
 
@@ -90,11 +90,11 @@
 
                   <!-- Modal body -->
                   <div class="modal-body">
-                    <form method="POST" action="/createNode">
+                    <form method="POST" action="/formCreateNode/{{$goal->id}}">
                         @csrf
                       <div class="form-group">
                         <label for="descricao">Name:</label>
-                        <select class="custom-select">
+                        <select class="custom-select" name="nodes">
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
@@ -110,6 +110,7 @@
                         <button type="submit" class="btn btn-primary">Go</button>
                         <a class="btn btn-danger" href="/nodes">Cancel</a>
                       </div>
+                      <input type="hidden" name="type" value="1">
                     </form>
                   </div>
 

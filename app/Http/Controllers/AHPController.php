@@ -154,11 +154,5 @@ class AHPController extends Controller {
 		print_r(AHPController::FinalPriority($j_criteria, $j_alternatives));
 		  //echo "<hr>".AHPController::CheckConsistency($j_criteria)."<hr>";
 
-		  AHPController::judments(1);
 	}	
-
-	//Views
-	public function judments($id){
-		return view("objetivos.judments");
-	}
 }

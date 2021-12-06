@@ -68,9 +68,58 @@
         @endforeach
       </tbody>
     </table><hr>
-    <div>
-      <a class="btn btn-primary" href="#">New Alternative</a>
-    </div>
+
+    <div class="btn-group">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rexcluir_{{$goal->id}}">New Alternative(s)</button>
+
+              <!-- Modal aqui -->
+              <!-- The Modal -->
+              <div class="modal" id="rexcluir_{{$goal->id}}">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">How many alternatives would you like to add? (at least two)</h4>
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <form method="POST" action="/formCreateNode/{{$goal->id}}">
+                        @csrf
+                      <div class="form-group">
+                        <label for="descricao">Name:</label>
+                        <select class="custom-select" name="nodes">
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                      </div>
+                      <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">Go</button>
+                        <a class="btn btn-danger" href="/nodes">Cancel</a>
+                      </div>
+                      <input type="hidden" name="type" value="1">
+                    </form>
+                  </div>
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <div class="btn-group">
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
   </div>
 </div>
 @stop
