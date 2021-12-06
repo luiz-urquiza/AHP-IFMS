@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ObjetivoController;
 use App\Http\Controllers\AHPController;
 use App\Http\Controllers\NodesController;
+use App\Http\Controllers\ReportController;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -52,4 +53,5 @@ Route::get('/comparisons/{up}/{id}', [NodesController::class, 'comparisons']);
 Route::post('/formCreateNode/{up}', [NodesController::class, 'formCreateNode']);
 Route::post('/createNode/{up}', [NodesController::class, 'createNode']);
 Route::get('/node/{id}/remove', [NodesController::class, 'removeNode']);
+Route::get('/nodes/{id}/report', [ReportController::class, 'report']);
 

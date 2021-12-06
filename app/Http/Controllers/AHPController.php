@@ -8,7 +8,7 @@ use App\Models\Judments;
 
 class AHPController extends Controller {
 
-	public function Normalize($matrix) {
+	public static function Normalize($matrix) {
 		$dim = count($matrix);
 
 		$sum_cols = array();
@@ -30,7 +30,7 @@ class AHPController extends Controller {
 		return($n_matrix);
 	}
 
-	public function GetPriority($julgamentos)	{
+	public static function GetPriority($julgamentos)	{
 		$n_matrix = AHPController::normalize($julgamentos);
 		$dim = count($n_matrix);
 		$priority = array();
@@ -46,7 +46,7 @@ class AHPController extends Controller {
 		return($priority);
 	}
 
-	public function CheckConsistency($julgamentos) 	{
+	public static function CheckConsistency($julgamentos) 	{
 		$saaty = array(0,0,0.00001,0.5247,0.8816,1.1086,1.2479,1.3417,1.4057,1.4499,1.4854);
 		$priority = AHPController::GetPriority($julgamentos);
 		$dim = count($julgamentos);
@@ -67,7 +67,7 @@ class AHPController extends Controller {
 		return $cr;
 	}
 
-	public function FinalPriority($j_criteria, $j_alternatives) {
+	public static function FinalPriority($j_criteria, $j_alternatives) {
 
 		$c = count($j_alternatives); //quantidade de critérios
 		$a = count($j_alternatives[0]); //quantidade de alternativas
@@ -83,7 +83,7 @@ class AHPController extends Controller {
 		return($final);
 	}
 
-	public function GetMatrix($objective, $level) {
+	public static function GetMatrix($objective, $level) {
 		$nodes = Node::get()->where('level', 1);
 
 		foreach ($nodes as $node) {
@@ -91,7 +91,7 @@ class AHPController extends Controller {
 		}
 	}
 
-	public function GetCriteriaJudmentsMatrix($objective, $level) {
+	public static function GetCriteriaJudmentsMatrix($objective, $level) {
 		//$judments = Judments::orderBy('id', 'DESC')->get()->where('id_node', 1)->where('id_node1', 2);
 		$query = Judments::orderBy('id_node1', 'ASC')->orderBy('id_node2', 'ASC')->get()->where('id_node', $objective);
 		$judments = array();
@@ -121,7 +121,7 @@ class AHPController extends Controller {
 		return($criteria);
 	}
 
-	public function GetAlternativesJudmentsMatrix($objective, $level) {
+	public static function GetAlternativesJudmentsMatrix($objective, $level) {
 		//$judments = Judments::orderBy('id', 'DESC')->get()->where('id_node', 1)->where('id_node1', 2);
 		$query = Judments::orderBy('id_node1', 'ASC')->orderBy('id_node2', 'ASC')->get()->where('id_node', $objective);
 
@@ -153,6 +153,5 @@ class AHPController extends Controller {
 
 		print_r(AHPController::FinalPriority($j_criteria, $j_alternatives));
 		  //echo "<hr>".AHPController::CheckConsistency($j_criteria)."<hr>";
-
 	}	
 }

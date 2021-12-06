@@ -5,6 +5,7 @@ use App\Models\Objetivo;
 use App\Models\Node;
 use App\Models\Judments;
 use Illuminate\Http\Request;
+use App\Http\Controllers\AHPController;
 
 class NodesController extends Controller {
     

@@ -48,7 +48,7 @@
 
 	<td>
 		<div class="btn-group">
-			<a class="btn btn-primary btn-sm" href="/o/{{$o->id}}/alterar">Change</a>
+			<a class="btn btn-primary btn-sm" href="/nodes/{{$o->id}}/report">Report</a>
 			<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#excluir_{{$o->id}}">Remove</button>
 		</div>
 		<div class="modal" id="excluir_{{$o->id}}">
