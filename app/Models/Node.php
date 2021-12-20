@@ -13,8 +13,8 @@ class Node extends Model
 
     protected $fillable = ['level', 'descr'];
 
-    public function FunctionName(Type $var = null)
+    public static function funny()
     {
-        # code...
+        echo "Oi eu sou goku";
     }
 }

@@ -23,6 +23,7 @@
         <label for="descricao">Name:</label>
         <input type="text" class="form-control" placeholder="" id="descricao" name="descricao[{{$i}}]">
         @endfor
+        <input type=hidden name="level" value={{$level}}>
       </div>
       <div class="btn-group">
         <button type="submit" class="btn btn-primary">Save</button>

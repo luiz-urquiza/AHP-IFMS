@@ -106,7 +106,7 @@
                         <button type="submit" class="btn btn-primary">Go</button>
                         <a class="btn btn-danger" href="/nodes">Cancel</a>
                       </div>
-                      <input type="hidden" name="type" value="1">
+                      <input type="hidden" name="type" value="2">
                     </form>
                   </div>
 
