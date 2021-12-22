@@ -260,25 +260,21 @@ class NodesController extends Controller
             if ($id_node2 == $proxy) {
                 $x[$s[0]][$id_node2][$id_node1] = $s[3];
             }
-            Judments::where('id_node', $s[0])
-                ->where('id_node1', $id_node1)
-                ->where('id_node2', $id_node2)
-                ->update(['score' => $s[3]]);
+            Judments::where('id_node', $s[0])->where('id_node1', $id_node1)->where('id_node2', $id_node2)->update(['score' => $s[3]]);
         }
 
         $up = array_unique($up);
+        $n = array_unique($n);
 
-        for ($k = 0; $k < count($up); $k++) {
+        foreach ($up as $p) {
             for ($i = 0; $i < count($n); $i++) {
                 for ($j = $i + 1; $j < count($n); $j++) {
-                    $z = 1 / ($x[$up[$k]][$proxy][$n[$i]] / $x[$up[$k]][$proxy][$n[$j]]);
-                    echo $up[$k]." - ".$n[$i]." - ".$n[$j]." = ".$z."<hr color='FF00FF'>";
-                    Judments::where('id_node', $up[$k])
-                        ->where('id_node1', $n[$i])
-                        ->where('id_node2', $n[$j])
-                        ->update(['score' => $z]);
+                    $z = 1/($x[$p][$proxy][$n[$i]] / $x[$p][$proxy][$n[$j]]);
+                    echo ":" . $p . " - ". $n[$i]. " - ". $n[$j] ." == ". $z ."<br>";
+                    Judments::where('id_node', $p)->where('id_node1', $n[$i])->where('id_node2', $n[$j])->update(['score' => $z]);
                 }
             }
         }
+        return redirect("/nodes");
     }
 }
