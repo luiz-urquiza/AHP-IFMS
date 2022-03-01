@@ -1,40 +1,93 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Objetivo;
 use App\Models\Node;
 use App\Models\Judments;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AHPController;
 
-class ReportController extends Controller {
+class ReportController extends Controller
+{
 
-    public function report($id) {
+    public function report($id)
+    {
         $j_criteria = AHPController::GetCriteriaJudmentsMatrix($id, 0);
-		$j_alternatives = AHPController::GetAlternativesJudmentsMatrix($id, 0);
-		
-//		AHPController::Normalize($j_criteria);
-		AHPController::GetPriority($j_criteria);
-		AHPController::CheckConsistency($j_criteria);
-        
-        echo "<hr><b>Matrix of Criteria Judments:</b><br>";
-        $query = Judments::
-        join('node', function ($join) {
-        $join->on('judments.id_node1', '=', 'node.id')
-        ->orOn('judments.id_node2', '=', 'node.id');
-        })
-        ->where('judments.id_node', $id)
-        ->select('node.descr')
-        ->distinct()
-        ->get();
+        $j_alternatives = AHPController::GetAlternativesJudmentsMatrix($id, 0);
 
-        foreach($query as $q){
-            echo "$q->descr ";
+        echo "<hr><b>Goal:</b><br>"; //Mostra o objetivo
+        $query = Node::find($id); //Busca pelo id da tabela node
+        echo $query->descr; //é possível usar dessa forma pois $query tem apenas um resultado 
+
+        echo "<hr><b>Criteria:</b><br>"; //Mostra os critérios do objetivo
+        $query = Judments:: //Consulta na tabela Judments que será armazenada na variável $query
+
+            //Aqui faz um join composto entre as duas tabelas (judments e node)
+            join('node', function ($join) {
+                $join->on('judments.id_node1', '=', 'node.id')
+                    ->orOn('judments.id_node2', '=', 'node.id');
+            })
+
+            //condição de consulta
+            ->where('judments.id_node', $id)
+
+            //Campo que seleciona da tabela
+            ->select('node.descr')
+
+            //Não aceita duplicados
+            ->distinct()
+
+            //Get ;)
+            ->get();
+
+        //Mostra os resultados
+        foreach ($query as $q) {
+            echo $q->descr."<br>"; //você pode colocar aqui a % de relevância de cada critério no 'atingimento' do objetivo
         }
 
+        echo "<hr><b>Alternatives:</b><br>"; //Mostra as alternativas para o objetivo
+        //Para mostrar as alternativas é necessário pegar os ids dos critérios
+        $alternatives = Judments::join('node', function ($join) {
+            $join->on('judments.id_node1', '=', 'node.id')
+                ->orOn('judments.id_node2', '=', 'node.id');
+        })
+            ->where('judments.id_node', $id)
+            ->select('node.id')
+            ->distinct()
+            ->get();
+
+        //Cria um array onde será armazenado os ids dos critérios
+        $v = array();
+        foreach ($alternatives as $a) {
+            array_push($v, $a->id);
+        }
+
+        //agora faz a consulta com um join composto
+        $alternatives = Judments::join('node', function ($join) {
+            $join->on('judments.id_node1', '=', 'node.id')
+                ->orOn('judments.id_node2', '=', 'node.id');
+        })
+            //busca resultados que estejam dentro do array $v
+            ->whereIn('judments.id_node', $v)
+            ->select('node.id', 'node.descr')
+            ->distinct()
+            ->get();
+        //mostra os rótulos das alternativas
+        foreach ($alternatives as $a) {
+            echo $a->descr . "<br>"; //você pode colocar aqui a % de prioridade de cada alternativa no 'atingimento' do objetivo
+        }
+
+        //		AHPController::Normalize($j_criteria);
+        AHPController::GetPriority($j_criteria);
+        AHPController::CheckConsistency($j_criteria);
+
+
+
         //        print_r($j_criteria);
-        foreach($j_criteria as $c){
-            foreach($c as $score){
+        echo "<hr><b>Matrix of Criteria Judments:</b><br>"; //Mostra os critérios do objetivo
+        foreach ($j_criteria as $c) {
+            foreach ($c as $score) {
                 printf("%.2f&nbsp;&nbsp;&nbsp;&nbsp;", $score);
             }
             echo "<br>";
@@ -46,21 +99,20 @@ class ReportController extends Controller {
         echo "<hr><b>Normalized Matrix of Criteria Judments:</b><br>";
         print_r(AHPController::Normalize($j_criteria));
 
-        for($i = 0; $i < count($j_alternatives);$i++) {
-            echo "<hr><b>Normalized Matrix of Alternatives Judments for Criterion ".($i+1).":</b><br>";
+        for ($i = 0; $i < count($j_alternatives); $i++) {
+            echo "<hr><b>Normalized Matrix of Alternatives Judments for Criterion " . ($i + 1) . ":</b><br>";
             print_r(AHPController::Normalize($j_alternatives[$i]));
         }
 
-        echo "<hr><b>Consistency of Criteria Judments:</b><br>".
-        AHPController::CheckConsistency($j_criteria);
+        echo "<hr><b>Consistency of Criteria Judments:</b><br>" .
+            AHPController::CheckConsistency($j_criteria);
 
-        for($i = 0; $i < count($j_alternatives);$i++) {
-            echo "<hr><b>Consistency of Alternatives Judments for Criterion ".($i+1).":</b><br>";
+        for ($i = 0; $i < count($j_alternatives); $i++) {
+            echo "<hr><b>Consistency of Alternatives Judments for Criterion " . ($i + 1) . ":</b><br>";
             echo AHPController::CheckConsistency($j_alternatives[$i]);
         }
 
         echo "<hr><b>Final Priorities:</b><br>";
-		print_r(AHPController::FinalPriority($j_criteria, $j_alternatives));
-
+        print_r(AHPController::FinalPriority($j_criteria, $j_alternatives));
     }
 }
