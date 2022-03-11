@@ -5,6 +5,7 @@
   <title>AHP - Bootstrap 4.6.0</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <style>
     .chart-wrapper {
       border: 1px solid blue;
@@ -16,7 +17,20 @@
       margin-top: 15px;
     }
   </style>
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+<style>
+    .chart-wrapper2 {
+      border: 1px solid blue;
+      height: 30px;
+      width: 60px;
+    }
+
+    p {
+      margin-top: 15px;
+    }
+  </style>
+ 
+ <link rel="stylesheet" href="/css/bootstrap.min.css">
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.bundle.min.js"></script>
   <script src="/js/chart.js"></script>

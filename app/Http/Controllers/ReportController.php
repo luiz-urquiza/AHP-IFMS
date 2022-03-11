@@ -11,16 +11,21 @@ use App\Http\Controllers\AHPController;
 class ReportController extends Controller
 {
 
+
     public function report($id)
     {
         $j_criteria = AHPController::GetCriteriaJudmentsMatrix($id, 0);
         $j_alternatives = AHPController::GetAlternativesJudmentsMatrix($id, 0);
 
-        echo "<hr><b>Goal:</b><br>"; //Mostra o objetivo
+        //echo "<hr><b>Goal:</b><br>"; //Mostra o objetivo
         $query = Node::find($id); //Busca pelo id da tabela node
-        echo $query->descr; //é possível usar dessa forma pois $query tem apenas um resultado 
+        //echo $query->descr; //é possível usar dessa forma pois $query tem apenas um resultado 
 
-        echo "<hr><b>Criteria:</b><br>"; //Mostra os critérios do objetivo
+        $obj=$query->descr;
+
+        //return view("objetivos.report")->with('objetivos', $query->descr);
+
+        //echo "<hr><b>Criteria:</b><br>"; //Mostra os critérios do objetivo
         $query = Judments:: //Consulta na tabela Judments que será armazenada na variável $query
 
             //Aqui faz um join composto entre as duas tabelas (judments e node)
@@ -41,12 +46,16 @@ class ReportController extends Controller
             //Get ;)
             ->get();
 
+            $criteria = $query;
         //Mostra os resultados
         foreach ($query as $q) {
-            echo $q->descr."<br>"; //você pode colocar aqui a % de relevância de cada critério no 'atingimento' do objetivo
+            //echo $q->descr ."<br>"; //você pode colocar aqui a % de relevância de cada critério no 'atingimento' do objetivo
         }
+        
 
-        echo "<hr><b>Alternatives:</b><br>"; //Mostra as alternativas para o objetivo
+       //return view("objetivos.report")->with('objetivos', $obj)->with('criteria', $criteria);
+
+        //echo "<hr><b>Alternatives:</b><br>"; //Mostra as alternativas para o objetivo
         //Para mostrar as alternativas é necessário pegar os ids dos critérios
         $alternatives = Judments::join('node', function ($join) {
             $join->on('judments.id_node1', '=', 'node.id')
@@ -75,8 +84,17 @@ class ReportController extends Controller
             ->get();
         //mostra os rótulos das alternativas
         foreach ($alternatives as $a) {
-            echo $a->descr . "<br>"; //você pode colocar aqui a % de prioridade de cada alternativa no 'atingimento' do objetivo
+            //echo $a->descr . "<br>"; //você pode colocar aqui a % de prioridade de cada alternativa no 'atingimento' do objetivo
         }
+
+        $score = (AHPController::FinalPriority($j_criteria, $j_alternatives));
+
+
+        return view("objetivos.report")
+        ->with('objetivos', $obj)
+        ->with('criteria', $criteria)
+        ->with('alternatives', $alternatives)
+        ->with('score', $score);
 
         //		AHPController::Normalize($j_criteria);
         AHPController::GetPriority($j_criteria);

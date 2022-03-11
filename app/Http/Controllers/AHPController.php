@@ -77,6 +77,7 @@ class AHPController extends Controller {
 		for($i = 0; $i < $a; $i++) {
 			for($j = 0; $j < $c; $j++) {
 				$final[$i] += AHPController::GetPriority($j_alternatives[$j])[$i] * AHPController::GetPriority($j_criteria)[$j];
+				$final[$i] = round($final[$i],3);
 			}
 		}
 
