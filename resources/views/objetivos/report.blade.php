@@ -34,13 +34,13 @@
 
   <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h4 class="display-6"> Objetivo </h4>
-    <p class="lead"> {{ $objetivos }} </p>
+    <h4 class="display-6"> Objetivo</h4>
+    <p class="lead"> {{ $results->getObjective() }} </p>
   </div>
 	</div>
     <h5 class="card-title">Criterios</h5>
 
-   @foreach($criteria as $q)
+   @foreach($results->getCriteria() as $q)
 
 	<div class="card-body">
     
@@ -51,7 +51,7 @@
 
     <h5 class="card-title">Alternativas</h5>
 
-    @foreach($alternatives as $a)
+    @foreach($results->getAlternatives() as $a)
 
  <div class="card-body">
  
@@ -62,7 +62,7 @@
 
  <h5 class="card-title">Score</h5>
 
-@foreach($score as $s)
+@foreach($results->getScore() as $s)
 
 <div class="card-body">
 
@@ -71,7 +71,9 @@
 
 @endforeach
 
-
+@for ($i = 0; $i < count($results->getAlternatives()) ; $i++)
+    {{ $results->getAlternatives()[$i]->descr }}: {{ $results->getScore()[$i] }} <br>
+@endfor
 
 	<div class="card text-center">
 		<div class="container">
