@@ -14,7 +14,7 @@
 
 
 @section ('conteudo')
-
+<!--
 <div class="card text-center">
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
@@ -29,15 +29,16 @@
       </li>
     </ul>
   </div>
-  
- 
 
   <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h4 class="display-6"> Objetivo</h4>
-    <p class="lead"> {{ $results->getObjective() }} </p>
+  
+</div>
+--> 
+<div class="container">
+    <p class="lead">Objective: {{ $results->getObjective() }} </p>
   </div>
-	</div>
+
+<!--
     <h5 class="card-title">Criterios</h5>
 
    @foreach($results->getCriteria() as $q)
@@ -74,7 +75,7 @@
 @for ($i = 0; $i < count($results->getAlternatives()) ; $i++)
     {{ $results->getAlternatives()[$i]->descr }}: {{ $results->getScore()[$i] }} <br>
 @endfor
-
+-->
 	<div class="card text-center">
 		<div class="container">
 		<div class="row">
@@ -92,10 +93,18 @@
 		const myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
-				labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+				labels: [
+					@foreach($results->getAlternatives() as $a)
+					'{{$a['descr']}}',
+					@endforeach
+					],
 				datasets: [{
-					label: '# of Votes',
-					data: [12, 19, 3, 5, 2, 3],
+					label: '% of priority of alternatives for the objective: {{$results->getObjective()}}',
+					data: [
+						@foreach($results->getScore() as $s)
+						'{{$s*100}}',
+						@endforeach
+					],
 					backgroundColor: [
 						'rgba(255, 99, 132, 0.2)',
 						'rgba(54, 162, 235, 0.2)',
