@@ -78,12 +78,12 @@ class ReportController extends Controller
         //Pega os scores
         $results->setScore(AHPController::FinalPriority($j_criteria, $j_alternatives));
 
-        print_r($results->getScore());
-
+        $results->setPriority( AHPController::GetPriority($j_criteria) );
+        
         return view("objetivos.report")->with('results', $results);
 
         //AHPController::Normalize($j_criteria);
-        AHPController::GetPriority($j_criteria);
+        
         AHPController::CheckConsistency($j_criteria);
 
         echo "<hr><b>Matrix of Criteria Judments:</b><br>"; //Mostra os critérios do objetivo
@@ -93,7 +93,7 @@ class ReportController extends Controller
             }
             echo "<br>";
         }
-
+        
         echo "<hr><b>Matrix of Alternatives Judments:</b><br>";
         print_r($j_alternatives);
 

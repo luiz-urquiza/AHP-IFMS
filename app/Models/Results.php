@@ -13,6 +13,7 @@ class Results extends Model
     private $criteria;
     private $alternative;
     private $score;
+    private $priority;
 
     public function setObjective($objective) {
         $this->objective = $objective;
@@ -44,5 +45,13 @@ class Results extends Model
     
     public function getScore() {
         return $this->score;
+    }
+
+    public function setPriority($priority){
+        $this->priority = $priority;
+    }
+
+    public function getPriority(){
+        return $this->priority;
     }
 }

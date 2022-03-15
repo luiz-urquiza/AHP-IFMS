@@ -2,9 +2,6 @@
 
 @section ('menu')
     <ul class="navbar-nav mr-auto">
-		<li class="nav-item">
-			<a class="nav-link" href="/os">Objetivos</a>
-		</li>
         <li class="nav-item">
 			<a class="nav-link" href="/nodes">Nodes</a>
 		</li>
