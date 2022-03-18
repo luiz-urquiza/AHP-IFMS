@@ -11,29 +11,12 @@
 
 
 @section ('conteudo')
-<!--
-<div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-pills card-header-pills">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="jumbotron jumbotron-fluid">
-  
-</div>
---> 
+ 
 <div class="container">
-    <p class="lead">Objective: {{ $results->getObjective() }} </p>
-  </div>
+
+	<h3> <class="lead"> Objective: {{ $results->getObjective() }} </h3>
+	
+</div>
 
 <!--
     <h5 class="card-title">Criterios</h5>
@@ -68,25 +51,30 @@
 </div>
 
 @endforeach
-
-@for ($i = 0; $i < count($results->getAlternatives()) ; $i++)
-    {{ $results->getAlternatives()[$i]->descr }}: {{ $results->getScore()[$i] }} <br>
-@endfor
 -->
-	<div class="card text-center">
-		<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="chart-wrapper">
-					<canvas id="myChart"></canvas>
-				</div>
+
+<!-- @for ($i = 0; $i < count($results->getAlternatives()) ; $i++)
+    {{ $results->getAlternatives()[$i]->descr }}: {{ $results->getScore()[$i] }} <br>
+@endfor -->
+
+<hr>
+	O Critério mais relevante para o problema de decisão {{ $results->getObjective() }} mais importante é: 
+<hr>	
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="chart-wrapper">
+				<canvas id="myChart"></canvas>
 			</div>
 		</div>
-		</div> 
 	</div>
+</div> 
+	
+
 <hr>
-O Critério mais relevante para o problema de decisão {{ $results->getObjective() }} mais importante é: 
+A Alternativa mais relevante para o problema de decisão {{ $results->getObjective() }} mais importante é: 
 <hr>
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
@@ -97,9 +85,7 @@ O Critério mais relevante para o problema de decisão {{ $results->getObjective
 	</div>
 </div>
 
-<hr>
-A Alternativa mais relevante para o problema de decisão {{ $results->getObjective() }} mais importante é: 
-<hr>
+
 
 	<script>
 

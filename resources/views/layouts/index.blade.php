@@ -8,7 +8,7 @@
   
   <style>
     .chart-wrapper {
-      border: 1px solid blue;
+   
       height: 300px;
       width: 600px;
     }
@@ -18,9 +18,9 @@
     }
   </style>
 
-<style>
+<!-- <style>
     .chart-wrapper2 {
-      border: 1px solid blue;
+      
       height: 30px;
       width: 60px;
     }
@@ -28,7 +28,7 @@
     p {
       margin-top: 15px;
     }
-  </style>
+  </style> -->
  
  <link rel="stylesheet" href="/css/bootstrap.min.css">
   <script src="/js/jquery.min.js"></script>
@@ -47,10 +47,10 @@
 
       @yield('menu')
 
-      <form class="form-inline mt-2 mt-md-0">
+      <!-- <form class="form-inline mt-2 mt-md-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      </form> -->
     </div>
   </nav>
   <br>
