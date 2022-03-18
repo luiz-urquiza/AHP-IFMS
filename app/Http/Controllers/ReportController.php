@@ -87,17 +87,15 @@ class ReportController extends Controller
         //     }
         // }
 
-        $temp = 0;
+        $temp = 10;
 
+        $results->setBestCriteriaPriority(0);
         for($i = 0; $i < count($results->getPriority()); $i++){
-            if($results->getPriority()[$i] > $temp){
-                $temp = $results->getPriority()[$i];
+            if($results->getPriority()[$i] > $results->getBestCriteriaPriority()){
+                $results->setBestCriteriaPriority($results->getPriority()[$i]);
                 $results->setBestCriteria($results->getCriteria()[$i]->descr);
             }    
         }
-
-			
-		
 
        return view("objetivos.report")->with('results', $results);
 

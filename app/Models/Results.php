@@ -18,7 +18,37 @@ class Results extends Model
     private $bestCriteria;
     private $bestAlternativeScore;
     private $bestCriteriaPriority;
+
+    public function setBestCriteriaPriority($bestCriteriaPriority) {
+        $this->bestCriteriaPriority = $bestCriteriaPriority;
+    }
+    public function getBestCriteriaPriority(){
+        return $this->bestCriteriaPriority;
+    }
+
+    public function setBestAlternative($bestAlternative){
+        $this->bestAlternative = $bestAlternative;
+    }
+
+    public function getBestAlternative(){
+        return $this->bestAlternative;
+    }
+
+    public function setBestCriteria($bestCriteria){
+        $this->bestCriteria = $bestCriteria;
+    }
+
+    public function getBestCriteria(){
+        return $this->bestCriteria;
+    }
     
+    public function setBestAlternativeScore( $bestAlternativeScore){
+        $this->bestAlternative = $bestAlternativeScore;
+    }
+
+    public function getBestAlternativeScore(){
+        return $this->bestAlternativeScore;
+    }
 
     public function setObjective($objective) {
         $this->objective = $objective;
@@ -59,38 +89,4 @@ class Results extends Model
     public function getPriority(){
         return $this->priority;
     }
-
-    public function setBestAlternative($bestAlternative){
-        $this->bestAlternative = $bestAlternative;
-    }
-
-    public function getBestAlternative(){
-        return $this->bestAlternative;
-    }
-
-    public function setBestCriteria($bestCriteria){
-        $this->bestCriteria = $bestCriteria;
-    }
-
-    public function getBestCriteria(){
-        return $this->bestCriteria;
-    }
-
-    public function setBestCriteriaPriority($bestCriteriaPriority){
-        $this->bestCriteria = $bestCriteriaPriority;
-    }
-
-    public function getBestCriteriaPriority(){
-        return $this->bestCriteriaPriority;
-    }
-    
-    public function setBestAlternativeScore($bestAlternativeScore){
-        $this->bestAlternative = $bestAlternativeScore;
-    }
-
-    public function getBestAlternativeScore(){
-        return $this->bestAlternativeScore;
-    }
-
-
 }

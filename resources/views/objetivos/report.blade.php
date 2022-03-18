@@ -58,7 +58,7 @@
 @endfor -->
 
 <hr>
-	O Critério mais relevante para o problema de decisão {{ $results->getObjective() }} é: {{$results->getBestCriteria()}} e tem valor:
+	O Critério mais relevante para o problema de decisão {{ $results->getObjective() }} é: {{$results->getBestCriteria()}} com {{$results->getBestCriteriaPriority()*100}}% de prioridade
 	
 <hr>	
 <div class="container">
