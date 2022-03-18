@@ -58,7 +58,8 @@
 @endfor -->
 
 <hr>
-	O Critério mais relevante para o problema de decisão {{ $results->getObjective() }} mais importante é: 
+	O Critério mais relevante para o problema de decisão {{ $results->getObjective() }} é: {{$results->getBestCriteria()}} e tem valor:
+	
 <hr>	
 <div class="container">
 	<div class="row">
@@ -191,7 +192,4 @@ A Alternativa mais relevante para o problema de decisão {{ $results->getObjecti
 			);
 		
 </script>
-
-
-
 @stop

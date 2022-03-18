@@ -14,6 +14,11 @@ class Results extends Model
     private $alternative;
     private $score;
     private $priority;
+    private $bestAlternative;
+    private $bestCriteria;
+    private $bestAlternativeScore;
+    private $bestCriteriaPriority;
+    
 
     public function setObjective($objective) {
         $this->objective = $objective;
@@ -54,4 +59,38 @@ class Results extends Model
     public function getPriority(){
         return $this->priority;
     }
+
+    public function setBestAlternative($bestAlternative){
+        $this->bestAlternative = $bestAlternative;
+    }
+
+    public function getBestAlternative(){
+        return $this->bestAlternative;
+    }
+
+    public function setBestCriteria($bestCriteria){
+        $this->bestCriteria = $bestCriteria;
+    }
+
+    public function getBestCriteria(){
+        return $this->bestCriteria;
+    }
+
+    public function setBestCriteriaPriority($bestCriteriaPriority){
+        $this->bestCriteria = $bestCriteriaPriority;
+    }
+
+    public function getBestCriteriaPriority(){
+        return $this->bestCriteriaPriority;
+    }
+    
+    public function setBestAlternativeScore($bestAlternativeScore){
+        $this->bestAlternative = $bestAlternativeScore;
+    }
+
+    public function getBestAlternativeScore(){
+        return $this->bestAlternativeScore;
+    }
+
+
 }

@@ -80,8 +80,31 @@ class ReportController extends Controller
 
         $results->setPriority( AHPController::GetPriority($j_criteria) );
         
-        return view("objetivos.report")->with('results', $results);
+        
+        // foreach($results->getPriority() as $pf) {
+        //     if($pf > $temp){
+        //         $temp = $pf;
+        //     }
+        // }
 
+        $temp = 0;
+
+        for($i = 0; $i < count($results->getPriority()); $i++){
+            if($results->getPriority()[$i] > $temp){
+                $temp = $results->getPriority()[$i];
+                $results->setBestCriteria($results->getCriteria()[$i]->descr);
+            }    
+        }
+
+			
+		
+
+       return view("objetivos.report")->with('results', $results);
+
+       
+       
+       
+       
         //AHPController::Normalize($j_criteria);
         
         AHPController::CheckConsistency($j_criteria);
