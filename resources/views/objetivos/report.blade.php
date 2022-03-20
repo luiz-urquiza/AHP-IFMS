@@ -86,7 +86,13 @@ A Alternativa mais relevante para o problema de decisão {{ $results->getObjecti
 	</div>
 </div>
 
-
+<!--
+	os dois scripts abaixo são necessários para colocar os labels nos gráficos 
+	é necessário instalar o plugin também
+	npm install chartjs-plugin-datalabels --save
+ -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
 	<script>
 
@@ -101,7 +107,7 @@ A Alternativa mais relevante para o problema de decisão {{ $results->getObjecti
 					label: '% of priority of alternatives for the objective: {{$results->getObjective()}}',
 					data: [
 						@foreach($results->getPriority() as $s)
-						'{{$s*100}}',
+						{{$s*100}},
 						@endforeach
 					],
 					backgroundColor: [
@@ -120,7 +126,13 @@ A Alternativa mais relevante para o problema de decisão {{ $results->getObjecti
 						'rgba(153, 102, 255, 1)',
 						'rgba(255, 159, 64, 1)'
 					],
-					borderWidth: 1
+					borderWidth: 1,
+					datalabels: { //formatação do label
+						color: 'black',
+						anchor: 'end',
+						align: 'top',
+						offset: 0
+					}
 				}]
 			};
 			
@@ -128,10 +140,35 @@ A Alternativa mais relevante para o problema de decisão {{ $results->getObjecti
 			const config = {
 				type: 'bar',
 				data,
+				plugins: [ChartDataLabels], //plugin dos labels
 				options: {
+					//configuração do label
+					plugins: {
+						datalabels: {
+							formatter: function(value, context) {
+								//return context.chart.data.labels[context.dataIndex];
+								//return context.dataIndex + ': ' + Math.round(value*100) + '%';
+								//return context.dataIndex + ': ' + Math.round(value*100) + '%';
+								return value + '%';
+								}
+								}
+							},
+
 					scales: {
 						y:{
-							beginAtZero: true
+							beginAtZero: true,
+							grid: {
+								borderColor: 'black',
+								borderWidth: 1,
+								display: false
+							}
+						},
+						x:{
+							grid: {
+								borderColor: 'black',
+								borderWidth: 1,
+								display: false
+							}
 						}
 					}
 				}
