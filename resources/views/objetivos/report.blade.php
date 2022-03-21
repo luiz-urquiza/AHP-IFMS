@@ -73,7 +73,7 @@
 	
 
 <hr>
-A Alternativa mais relevante para o problema de decisão {{ $results->getObjective() }} mais importante é: 
+A Alternativa mais relevante para o problema de decisão {{ $results->getObjective() }} é: {{$results->getBestAlternative()}} com {{$results->getBestAlternativeScore()*100}}% de prioridade
 <hr>
 
 <div class="container">
@@ -211,15 +211,53 @@ A Alternativa mais relevante para o problema de decisão {{ $results->getObjecti
 						'rgba(153, 102, 255, 1)',
 						'rgba(255, 159, 64, 1)'
 					],
-					borderWidth: 1
+					borderWidth: 1,
+					datalabels: { //formatação do label
+						color: 'black',
+						anchor: 'end',
+						align: 'top',
+						offset: 0
+					}
+					
 				}]
 			};
 
 			//Configurações Gráfico 2
 			const config2 = {
 				type: 'bar',
+				
 				data: data2,
-				options: {}
+				plugins: [ChartDataLabels], //plugin dos labels
+				options: {
+					//configuração do label
+					plugins: {
+						datalabels: {
+							formatter: function(value, context) {
+								//return context.chart.data.labels[context.dataIndex];
+								//return context.dataIndex + ': ' + Math.round(value*100) + '%';
+								//return context.dataIndex + ': ' + Math.round(value*100) + '%';
+								return value + '%';
+								}
+								}
+							},
+					scales: {
+						y:{
+							beginAtZero: true,
+							grid: {
+								borderColor: 'black',
+								borderWidth: 1,
+								display: false
+							}
+						},
+						x:{
+							grid: {
+								borderColor: 'black',
+								borderWidth: 1,
+								display: false
+							}
+						}
+					}
+				}
 			};
 			
 			////Renderiza o Gráfico 1
