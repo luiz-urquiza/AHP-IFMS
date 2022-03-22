@@ -12,6 +12,16 @@
 
 @section ('conteudo')
  
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link " href="report">Graphical results</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="GeneralReport">Numerical results</a>
+  </li>
+  
+</ul>
+
 <div class="container">
 
 	<h3> <class="lead"> Objective: {{ $results->getObjective() }} </h3>
@@ -57,23 +67,11 @@
     {{ $results->getAlternatives()[$i]->descr }}: {{ $results->getScore()[$i] }} <br>
 @endfor -->
 
-<hr>
-	O Critério mais relevante para o problema de decisão <b>{{ $results->getObjective() }} </b>é: {{$results->getBestCriteria()}} com {{$results->getBestCriteriaPriority()*100}}% de prioridade.
-	
-<hr>	
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="chart-wrapper">
-				<canvas id="myChart"></canvas>
-			</div>
-		</div>
-	</div>
-</div> 
+
 	
 
 <hr>
-A Alternativa mais relevante para o problema de decisão <b>{{ $results->getObjective() }}</b> é: {{$results->getBestAlternative()}} com {{$results->getBestAlternativeScore()*100}}% de prioridade.
+The most relevant Alternative for the decision problem {{ $results->getObjective() }} is:<b> {{$results->getBestAlternative()}}</b> with {{$results->getBestAlternativeScore()*100}}% of priority.
 <hr>
 
 <div class="container">
@@ -86,6 +84,19 @@ A Alternativa mais relevante para o problema de decisão <b>{{ $results->getObje
 	</div>
 </div>
 
+<hr>
+The most relevant Criterion for the decision problem {{ $results->getObjective() }} is: <b>{{$results->getBestCriteria()}} </b> with {{$results->getBestCriteriaPriority()*100}}% of priority.
+	
+<hr>	
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="chart-wrapper">
+				<canvas id="myChart"></canvas>
+			</div>
+		</div>
+	</div>
+</div> 
 <!--
 	os dois scripts abaixo são necessários para colocar os labels nos gráficos 
 	é necessário instalar o plugin também

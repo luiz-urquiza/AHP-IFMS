@@ -43,7 +43,7 @@ class Results extends Model
     }
     
     public function setBestAlternativeScore( $bestAlternativeScore){
-        $this->bestAlternative = $bestAlternativeScore;
+        $this->bestAlternativeScore = $bestAlternativeScore;
     }
 
     public function getBestAlternativeScore(){

@@ -89,24 +89,27 @@ class ReportController extends Controller
 
         //$temp = 10;
 
-        $results->setBestCriteriaPriority(0);
-        for($i = 0; $i < count($results->getPriority()); $i++){
+         $results->setBestCriteriaPriority(0);
+         for($i = 0; $i < count($results->getPriority()); $i++){
             if($results->getPriority()[$i] > $results->getBestCriteriaPriority()){
-                $results->setBestCriteriaPriority($results->getPriority()[$i]);
-                $results->setBestCriteria($results->getCriteria()[$i]->descr);
-            }    
+                 $results->setBestCriteriaPriority($results->getPriority()[$i]);
+                 $results->setBestCriteria($results->getCriteria()[$i]->descr);
+             }    
         }
 
 
         
 
-        $results->setBestAlternativeScore(0);
-        for($i = 0; $i < count($results->getPriority()); $i++){
-            if($results->getPriority()[$i] > $results->getBestAlternativeScore()){
-                $results->setBestAlternativeScore($results->getPriority()[$i]);
+         $results->setBestAlternativeScore(0);
+         for($i = 0; $i < count($results->getScore()); $i++){
+            //secho $results->getScore()[$i]."<br>";
+
+            if($results->getScore()[$i] > $results->getBestAlternativeScore()){
+                $results->setBestAlternativeScore($results->getScore()[$i]);
                 $results->setBestAlternative($results->getAlternatives()[$i]->descr);
             }    
         }
+
 
        return view("objetivos.report")->with('results', $results);
 
