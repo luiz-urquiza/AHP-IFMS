@@ -5,6 +5,7 @@ use App\Http\Controllers\ObjetivoController;
 use App\Http\Controllers\AHPController;
 use App\Http\Controllers\NodesController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\NumericalReportController;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -19,8 +20,9 @@ Route::get('/objetivos', [ObjetivoController::class, 'index']);
 Route::get('/formCreateObjetivo', [ObjetivoController::class, 'formCreate']);
 Route::get('/formCreateCriterio/{id}', [ObjetivoController::class, 'formCreateCriterio']);
 Route::post('/createObjetivo', [ObjetivoController::class, 'create']);
-Route::post('/createCriterio', [ObjetivoController::class, 'createCriterio']);
 
+
+Route::get('/objetivos', [ObjetivoController::class, 'index']);
 //Route::get('/objetivo/{id}/criterios', function($id=1) {
 //	return view('objetivos.criterios');
 //});
@@ -55,4 +57,5 @@ Route::post('/createNode/{up}', [NodesController::class, 'createNode']);
 Route::post('/UpdateScore/{proxy}', [NodesController::class, 'UpdateScore']);
 Route::get('/node/{id}/remove', [NodesController::class, 'removeNode']);
 Route::get('/nodes/{id}/report', [ReportController::class, 'report']);
+Route::get('/nodes/{id}/GeneralReport', [NumericalReportController::class, 'report']);
 

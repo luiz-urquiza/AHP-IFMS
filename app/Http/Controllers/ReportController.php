@@ -12,7 +12,6 @@ use App\Http\Controllers\AHPController;
 class ReportController extends Controller
 {
 
-
     public function report($id)
     {
         //Criamos um objeto do modelo de resultados 
@@ -97,9 +96,6 @@ class ReportController extends Controller
              }    
         }
 
-
-        
-
          $results->setBestAlternativeScore(0);
          for($i = 0; $i < count($results->getScore()); $i++){
             //secho $results->getScore()[$i]."<br>";
@@ -112,11 +108,7 @@ class ReportController extends Controller
 
 
        return view("objetivos.report")->with('results', $results);
-
-       
-       
-       
-       
+     
         //AHPController::Normalize($j_criteria);
         
         AHPController::CheckConsistency($j_criteria);
