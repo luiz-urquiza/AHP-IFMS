@@ -17,7 +17,7 @@
     <a class="nav-link " href="report">Graphical results</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="GeneralReport">Numerical results</a>
+    <a class="nav-link" href="NumericalReport">Numerical results</a>
   </li>
   
 </ul>
