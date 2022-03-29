@@ -110,8 +110,8 @@ class NumericalReportController extends Controller
             }    
         }
 
-
-        //return view("objetivos.numericalreport")->with('results', $results);
+//dd($j_criteria);
+        return view("objetivos.numericalreport")->with('results', $results)->with('j_criteria', $j_criteria);
      
         //AHPController::Normalize($j_criteria);
         

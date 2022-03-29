@@ -58,4 +58,3 @@ Route::post('/UpdateScore/{proxy}', [NodesController::class, 'UpdateScore']);
 Route::get('/node/{id}/remove', [NodesController::class, 'removeNode']);
 Route::get('/nodes/{id}/report', [ReportController::class, 'report']);
 Route::get('/nodes/{id}/NumericalReport', [NumericalReportController::class, 'report']);
-

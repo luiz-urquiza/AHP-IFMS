@@ -19,44 +19,46 @@
     <tr>
         <th>Critérios</th>
         @foreach($results->getCriteria() as $q)
-
+        
             <th scope="col">{{$q["descr"]}}</th>
         
         @endforeach
+        
     </tr>
     </thead>
     <tbody>
-    @foreach($results->getCriteria() as $q)
-        
-                
-        <tr>
+        <!--{{$i=-1}}
+            foreach ($j_criteria as $c) {
+            foreach ($c as $score) {
+                printf("%.2f&nbsp;&nbsp;&nbsp;&nbsp;", $score);
+            }
+            echo "<br>";
+        }
+--> 
+ 
 
-        <td scope="col">{{$q["descr"]}}</td>
+    @foreach($j_criteria as $c)
+    
+    <tr>
+    <td scope="col">{{$results->getCriteria()[++$i]["descr"]}}</td>
+        @foreach($c as $jc)
+                    
+            <td scope="col">{{$jc}}</td>
+                    
+        @endforeach
         
-        <!-- @foreach($results->getCriteria() as $q2)
-        @if($q["descr"] == $q2["descr"])
-            <td>1,000</td>
-        @elseif($q["descr"] < $q2["descr"])
-            <td id="c{{$q['descr']}}_{{$q2['descr']}}">  
-                
-        @for ($i = 0; $i < count($results->getCriteria()) ; $i++)
-             {{ $results->getCriteria()[$i]->descr }}: {{ $results->getScore()[$i] }} <br>
-        @endfor 
+    </tr>@endforeach
 
-        @else
-            <td id="c{{$q['descr']}}_{{$q2['descr']}}"></td>   
-        @endif       
-        @endforeach -->
-        </tr>
-        
-       
-    @endforeach
+   
 
+ 
   </tbody>
  </table>
 
  </div>
+</div>
  <hr>
+ <div class="card">
  <div class="card-body">
 
  <table class="table">
@@ -108,6 +110,6 @@
     {{ $results->getAlternatives()[$i]->descr }}: {{ $results->getScore()[$i] }} <br>
  @endfor  -->
 
-</div>
+    </div>
  </div> 
  @stop

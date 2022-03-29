@@ -122,7 +122,7 @@ class ReportController extends Controller
         }
         
         echo "<hr><b>Matrix of Alternatives Judments:</b><br>";
-        print_r($j_alternatives);
+        dd($j_alternatives);
 
         echo "<hr><b>Normalized Matrix of Criteria Judments:</b><br>";
         print_r(AHPController::Normalize($j_criteria));
