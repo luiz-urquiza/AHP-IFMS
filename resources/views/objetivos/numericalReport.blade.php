@@ -9,7 +9,6 @@
     </ul>
 @stop
 
-
 @section ('conteudo')
 <div class="card">
 <div class="card-body">
@@ -73,21 +72,50 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($results->getAlternatives() as $a)
+        <!-- {{$i=-1}}-->
+    @foreach($j_alternatives as $a)
+    {{$results->getCriteria()[++$i]['descr']}}
+    <table  class="table">   
+    
+         @foreach($a as $b)
+   
+       <tr>
        
-                
-        <tr>
+            @foreach($b as $c)
+                <td scope="col"> {{$c}}<td>
+            @endforeach
         
-        <td scope="col">{{$a["descr"]}}</td>
+      </tr>
         
+        @endforeach
 
-        </tr>
-        
-
+     
+    </table>
+    <hr>
     @endforeach
 
   </tbody>
  </table>
+
+
+<table>
+
+
+    
+@foreach($j_alternatives as $a)
+<!-- tabela  --> <hr color="00ff00">
+    @foreach($a as $b)
+        <!-- tr -->
+            @foreach($b as $c)
+                <!-- td -->{{$c}}
+            @endforeach
+        <!-- tr -->
+    @endforeach
+<!-- tabela -->
+@endforeach     
+ 
+
+
     
 </div>
     
