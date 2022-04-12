@@ -12,10 +12,10 @@
 @section ('conteudo')
 <div class="card">
 <div class="card-body">
- <h5 class="card-title">Criterios</h5>
+ <h5 class="card-title">Criteria</h5>
  <table class="table">
     <thead class="thead-light"> 
-    <tr>
+    <tr align="center">
         <th>Critérios</th>
         @foreach($results->getCriteria() as $q)
         
@@ -38,11 +38,11 @@
 
     @foreach($j_criteria as $c)
     
-    <tr>
+    <tr align="center">
     <td scope="col">{{$results->getCriteria()[++$i]["descr"]}}</td>
         @foreach($c as $jc)
                     
-            <td scope="col">{{$jc}}</td>
+            <td scope="col">{{round($jc,3)}}</td>
                     
         @endforeach
         
@@ -50,95 +50,42 @@
     </tbody>
  </table>
 
+
  </div>
 </div>
- <hr>
-
- <div class="card">
- <div class="card-body">
-
-    <!-- <table class="table">
-        <thead class="thead-light"> 
-        <tr>
-         <th>Alternativas</th> 
-            @foreach($results->getAlternatives() as $a)
-
-                <th scope="col">{{$a["descr"]}}</th>
-            
-            @endforeach
-        </tr>
-        </thead>
-        <tbody>
-            {{$i=-1}} -->
-  
-    @foreach($j_alternatives as $a)
-    <table  class="table"> 
-  
-    <thead class="thead-light">
-        <th>{{$results->getCriteria()[++$i]['descr']}}<th>
-
-        
-        @foreach($results->getAlternatives() as $alter)
-        
-        <th scope="col">{{$alter["descr"]}}</th>
-        @endforeach
-        
-    </thead>
+<br><br>
+<div class="card">
+<div class="card-body">
+ <h5 class="card-title">Alternatives</h5>
+ </div>
+</div>
+<table class="table">
     <tbody>
-        @foreach($a as $b)
-        <tr>
-
-        
-            @foreach($b as $c)
-                <td scope="col"> {{$c}}<td>
-            @endforeach
-            
+        <!-- {{$i=-1}}
+    {{$j=-1}} -->
+        @foreach($j_alternatives as $a)
+        <tr align="center">
+            <th>{{$results->getCriteria()[++$j]['descr']}}</th>
+            @foreach($results->getAlternatives() as $x)
+        <th>{{$x["descr"]}}</th>
+        @endforeach
         </tr>
-        @endforeach 
-           
-
-    </tbody>
-    </table>
-@endforeach
-<hr>
-    
-
-    
-@foreach($j_alternatives as $a)
-<!-- tabela  --> <hr color="00ff00">
-    @foreach($a as $b)
-        <!-- tr -->
+        @foreach($a as $b)
+        <tr align="center">
+        <td>{{$results->getAlternatives()[++$i]["descr"]}}</td>
             @foreach($b as $c)
-                <!-- td -->{{$c}}
+            <td>{{round($c,3)}}</td>
             @endforeach
-        <!-- tr -->
-    @endforeach
-<!-- tabela -->
-@endforeach     
- 
-
-
+            </tr>
+        @endforeach <!-- {{$i=-1}} -->
+        
+        @endforeach
     
 
     
-                <!-- 
+    </tbody>
+ </table>
 
-            <h5 class="card-title">Score</h5>
+ <hr color="FFOOOO">
 
-            @foreach($results->getScore() as $s)
-
-            <div class="card-body">
-
-            <p class="card-text">{{ $s }}</p>
-            </div>
-
-            @endforeach
-
-
-            @for ($i = 0; $i < count($results->getAlternatives()) ; $i++)
-                {{ $results->getAlternatives()[$i]->descr }}: {{ $results->getScore()[$i] }} <br>
-            @endfor  -->
-
-    </div>
- </div> 
  @stop
