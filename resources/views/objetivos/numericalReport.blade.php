@@ -47,59 +47,61 @@
         @endforeach
         
     </tr>@endforeach
-
-   
-
- 
-  </tbody>
+    </tbody>
  </table>
 
  </div>
 </div>
  <hr>
+
  <div class="card">
  <div class="card-body">
 
- <table class="table">
-    <thead class="thead-light"> 
-    <tr>
-        <th>Alternativas</th>
-       @foreach($results->getAlternatives() as $a)
+    <!-- <table class="table">
+        <thead class="thead-light"> 
+        <tr>
+         <th>Alternativas</th> 
+            @foreach($results->getAlternatives() as $a)
 
-            <th scope="col">{{$a["descr"]}}</th>
+                <th scope="col">{{$a["descr"]}}</th>
+            
+            @endforeach
+        </tr>
+        </thead>
+        <tbody>
+            {{$i=-1}} -->
+  
+    @foreach($j_alternatives as $a)
+    <table  class="table"> 
+  
+    <thead class="thead-light">
+        <th>{{$results->getCriteria()[++$i]['descr']}}<th>
+
         
+        @foreach($results->getAlternatives() as $alter)
+        
+        <th scope="col">{{$alter["descr"]}}</th>
         @endforeach
-    </tr>
+        
     </thead>
     <tbody>
-        <!-- {{$i=-1}}-->
-    @foreach($j_alternatives as $a)
-    {{$results->getCriteria()[++$i]['descr']}}
-    <table  class="table">   
-    
-         @foreach($a as $b)
-   
-       <tr>
-       
+        @foreach($a as $b)
+        <tr>
+
+        
             @foreach($b as $c)
                 <td scope="col"> {{$c}}<td>
             @endforeach
-        
-      </tr>
-        
-        @endforeach
+            
+        </tr>
+        @endforeach 
+           
 
-     
+    </tbody>
     </table>
-    <hr>
-    @endforeach
-
-  </tbody>
- </table>
-
-
-<table>
-
+@endforeach
+<hr>
+    
 
     
 @foreach($j_alternatives as $a)
@@ -117,26 +119,25 @@
 
 
     
-</div>
+
     
-    
-    <!-- 
+                <!-- 
 
- <h5 class="card-title">Score</h5>
+            <h5 class="card-title">Score</h5>
 
- @foreach($results->getScore() as $s)
+            @foreach($results->getScore() as $s)
 
- <div class="card-body">
+            <div class="card-body">
 
- <p class="card-text">{{ $s }}</p>
- </div>
+            <p class="card-text">{{ $s }}</p>
+            </div>
 
- @endforeach
+            @endforeach
 
 
- @for ($i = 0; $i < count($results->getAlternatives()) ; $i++)
-    {{ $results->getAlternatives()[$i]->descr }}: {{ $results->getScore()[$i] }} <br>
- @endfor  -->
+            @for ($i = 0; $i < count($results->getAlternatives()) ; $i++)
+                {{ $results->getAlternatives()[$i]->descr }}: {{ $results->getScore()[$i] }} <br>
+            @endfor  -->
 
     </div>
  </div> 
